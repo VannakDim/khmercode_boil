@@ -59,7 +59,7 @@ class SliderController extends Controller
                 $last_img = $up_location.$image_name;
                 $manager = new ImageManager(new Driver());
                 $img = $manager->read($image);
-                $img = $img->resize(1920,1440);
+                $img = $img->resize(1920,1080);
                 $img->toJpeg(80)->save($last_img);
 
                 $slider->image= $last_img;
