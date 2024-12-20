@@ -1,0 +1,25 @@
+#slider-image{
+    height: 108px;
+    width: 192px;
+}
+
+
+.kh-koulen{
+    font-family: "Koulen", sans-serif !important;
+    line-height: 27px !important;
+  }
+  
+.kh-battambang{
+  font-family: "Battambang", sans-serif !important;
+  line-height: 27px;
+}
+
+.card-body p{
+  font-family: "Battambang", sans-serif !important;
+
+}
+
+.sidenav-item-link i{
+  font-size: 1.5rem;
+  padding-right: 5px;
+}

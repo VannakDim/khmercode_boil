@@ -1,0 +1,40 @@
+.kh-koulen {
+  font-family: "Koulen", sans-serif !important;
+  line-height: 40px !important;
+}
+
+.kh-battambang {
+  font-family: "Battambang", sans-serif !important;
+  line-height: 40px;
+}
+
+
+.justify {
+  text-align: justify !important;
+}
+
+.w-bold {
+  font-weight: 700 !important;
+}
+
+.about-us .content h1,
+h2,
+h3 {
+  line-height: 40px !important;
+}
+
+.about-us .content h4,
+h5,
+h6,
+p {
+  font-family: "Battambang", sans-serif !important;
+
+}
+
+.todo-list__label__description {
+  font-family: "Battambang", sans-serif !important;
+}
+
+.social-link{
+  font-size: 1.2rem;
+}

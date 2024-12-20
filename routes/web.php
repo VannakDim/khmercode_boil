@@ -1,0 +1,76 @@
+<?php
+
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UserAuthController;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
+
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
+
+Route::get('/',[HomeController::class, 'home'])->name('home');
+Route::get('/about',[HomeController::class, 'about'])->name('home.about');
+Route::get('/contact',[HomeController::class, 'contact'])->name('home.contact');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        $users = User::all();
+        return view('admin.index',compact('users'));
+    })->name('dashboard');
+    
+    Route::get('/slider/all',[SliderController::class, 'index'])->name('all.slider');
+    Route::get('/slider/get/{id}',[SliderController::class, 'get_slider_data'])->name('get_slider_data');
+    Route::post('/slider/store',[SliderController::class, 'store'])->name('store.slider');
+    Route::get('/slider/edit/{id}',[SliderController::class, 'edit']);
+    Route::post('/slider/update/{id}',[SliderController::class, 'update']);
+    Route::post('/slider/update_slider',[SliderController::class, 'update_slider'])->name('update_slider');
+    Route::get('/slider/softDel/{id}',[SliderController::class, 'softDelete']);
+    
+    Route::get('/category/all',[CategoryController::class, 'index'])->name('all.category');
+    Route::post('/category/store',[CategoryController::class, 'store'])->name('store.category');
+    Route::get('/category/edit/{id}',[CategoryController::class, 'edit']);
+    Route::post('/category/update/{id}',[CategoryController::class, 'update']);
+    Route::get('/category/softDel/{id}',[CategoryController::class, 'softDelete']);
+    
+    Route::get('/brand/all',[BrandController::class, 'index'])->name('all.brand');
+    Route::post('/brand/store',[BrandController::class, 'store'])->name('store.brand');
+    Route::get('/brand/edit/{id}',[BrandController::class, 'edit']);
+    Route::post('/brand/update/{id}',[BrandController::class, 'update']);
+    Route::get('/brand/softDel/{id}',[BrandController::class, 'softDelete']);
+    
+    Route::get('/service/all',[ServiceController::class, 'index'])->name('all.service');
+    Route::get('/service/add',[ServiceController::class, 'add'])->name('add.service');
+    Route::post('/service/store',[ServiceController::class, 'store'])->name('store.service');
+    Route::get('/service/edit/{id}',[ServiceController::class, 'edit']);
+    Route::post('/service/update/{id}',[ServiceController::class, 'update']);
+    Route::get('/service/softDel/{id}',[ServiceController::class, 'softDelete']);
+
+    Route::get('/about-item-page', function () {
+        return view('admin.about.items');
+    });
+    Route::get('/about/item',[AboutController::class, 'about_item'])->name('about_item');
+    Route::post('/about/store/item',[AboutController::class, 'store_item'])->name('store.item');
+    
+    Route::get('/about/all',[AboutController::class, 'index'])->name('all.about');
+    Route::get('/about/add',[AboutController::class, 'add'])->name('add.about');
+    Route::post('/about/store',[AboutController::class, 'store'])->name('store.about');
+    Route::get('/about/edit/{id}',[AboutController::class, 'edit']);
+    Route::post('/about/update/{id}',[AboutController::class, 'update']);
+    Route::get('/about/softDel/{id}',[AboutController::class, 'softDelete']);
+    Route::get('/about/softDel/item/{id}',[AboutController::class, 'softDelete']);
+    
+    
+    // Route::get('/profile',[UserAuthController::class, 'show'])->name('user.profile');
+    Route::get('/logout',[UserAuthController::class, 'logout'])->name('user.logout');
+
+});
