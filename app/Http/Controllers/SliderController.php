@@ -38,11 +38,11 @@ class SliderController extends Controller
                         'image',
                         'mimes:jpg,png,jpeg,gif,svg',
                         'dimensions:min_width=100,min_height=100,max_width=19200,max_height=10800',
-                        'max:12048'
+                        'max:6048'
                        ],
                       
         ],[
-            'title.required'=>'សូមបញ្ចូលឈ្មោះចំណងជើង',
+            'title.required'=>'សូមបញ្ចូលចំណងជើង',
             'image.required'=>'សូមបញ្ចូលរូបភាព',
         ]);
         if($validate->fails()){
