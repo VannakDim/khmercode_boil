@@ -19,7 +19,7 @@
                             @foreach ($sliders as $slider)
                                 <div class="col-md-6 col-xl-4">
                                     <div class="card mb-4">
-                                        <img class="card-img-top" src="{{ asset($slider->image) }}">
+                                        <img style="" class="card-img-top" src="{{ asset($slider->image) }}">
                                         <div class="card-body">
                                             <h5 class="card-title text-primary kh-koulen">{{ $slider->title }}</h5>
                                             <p class="card-text pb-3">{{ $slider->description }}</p>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="row py-3">
                                 <div class="col-lg">
-                                    <p class="text-muted">Image file must be less than 2mb</p>
+                                    {{-- <p class="text-muted">Image file must be less than 2mb</p> --}}
                                     <input type="file" id="edit-newimage" name="image">
                                 </div>
                             </div>
