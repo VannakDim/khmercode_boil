@@ -2,13 +2,7 @@
 @section('link')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        .card-img-top {
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position-x: center;
-            background-position-y: center;
-            height: 200px;
-        }
+        
     </style>
 @endsection
 @section('main_body')
@@ -25,7 +19,7 @@
                     @foreach ($services as $service)
                         <div class="col-md-6 col-xl-4">
                             <div class="card mb-4">
-                                <div class="card-img-top"
+                                <div class="card-img-contain"
                                     style="background-image: url({{ asset($service->service_icon) }});"></div>
                                 {{-- <img style="" class="card-img-top" src="{{ asset($service->service_icon) }}"> --}}
                                 <div class="card-body">
@@ -33,6 +27,8 @@
                                     <p class="card-text pb-3">{{ $service->short_description }}</p>
                                     <a href="#" class="btn btn-outline-primary edit-button"
                                         data-id={{ $service->id }}>Edit</a>
+                                    <a class="btn btn-danger" href="{{ url('service/softDel/' . $service->id) }}"
+                                        href="">Delete</a>
                                 </div>
                             </div>
                         </div>

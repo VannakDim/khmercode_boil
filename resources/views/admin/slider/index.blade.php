@@ -6,17 +6,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                      
+
                         <div class="row">
                             @foreach ($sliders as $slider)
                                 <div class="col-md-6 col-xl-4">
                                     <div class="card mb-4">
-                                        <img style="" class="card-img-top" src="{{ asset($slider->image) }}">
+                                        <div class="card-img-cover"
+                                            style="background-image: url({{ asset($slider->image) }});"></div>
+                                        {{-- <img style="" class="card-img-top" src="{{ asset($slider->image) }}"> --}}
                                         <div class="card-body">
                                             <h5 class="card-title text-primary kh-koulen">{{ $slider->title }}</h5>
                                             <p class="card-text pb-3">{{ $slider->description }}</p>
                                             <a href="#" class="btn btn-outline-primary edit-button"
                                                 data-id={{ $slider->id }}>Edit</a>
+                                            <a class="btn btn-danger" href="{{ url('slider/softDel/' . $slider->id) }}"
+                                                href="">Delete</a>
                                         </div>
                                     </div>
                                 </div>
@@ -82,39 +86,37 @@
 @endsection
 
 @section('script')
-
-    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
+    {{-- <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
     <script>
-
         var SITEURL = '{{ URL::to('') }}' + '/';
 
 
         $(document).ready(function() {
 
             $('.card').on('click', '.edit-button', function() {
-            
-            var id = ($(this).data('id'));
-            $.ajax({
-                    url: '/slider/get/' + id,
-                    type: 'GET',
-                })
-                .done(function(response) {
-                    console.log(response.message);
-                    $('#edit-id').val(id);
-                    $('#edit-title').val(response.slider.title);
-                    $('#edit-description').val(response.slider.description);
-                    $('#edit-image').attr('src', SITEURL + response.slider.image);
-                    $('#editModal').modal('show');
-                    
-                })
+
+                var id = ($(this).data('id'));
+                $.ajax({
+                        url: '/slider/get/' + id,
+                        type: 'GET',
+                    })
+                    .done(function(response) {
+                        console.log(response.message);
+                        $('#edit-id').val(id);
+                        $('#edit-title').val(response.slider.title);
+                        $('#edit-description').val(response.slider.description);
+                        $('#edit-image').attr('src', SITEURL + response.slider.image);
+                        $('#editModal').modal('show');
+
+                    })
             });
 
-            $('#edit-form').submit(function (e) {
-               
+            $('#edit-form').submit(function(e) {
+
                 $('#edit-error').hide();
                 e.preventDefault();
                 const sliderData = new FormData(this);
@@ -136,8 +138,9 @@
                             location.reload();
                         } else {
                             $('#edit-error').find('ul').html('');
-                            $.each(response.error, function(index, val){
-                                $('#edit-error').find('ul').append('<li>'+ val +'</li>');
+                            $.each(response.error, function(index, val) {
+                                $('#edit-error').find('ul').append('<li>' + val +
+                                    '</li>');
                             })
                             $('#edit-error').show();
                             console.log(response.error);
@@ -147,7 +150,6 @@
             });
         });
     </script>
-
 @endsection
 
 @section('link')

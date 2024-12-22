@@ -23,3 +23,19 @@
   font-size: 1.5rem;
   padding-right: 5px;
 }
+
+.card-img-contain {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  height: 200px;
+}
+
+.card-img-cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  height: 300px;
+}
