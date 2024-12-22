@@ -59,8 +59,8 @@ class SliderController extends Controller
                 $last_img = $up_location.$image_name;
                 $manager = new ImageManager(new Driver());
                 $img = $manager->read($image);
-                $img->cover(1920,1080);
-                // $img->scale(width:1920);
+                // $img->cover(1920,1080);
+                $img->scale(width:1920);
                 // $img = $img->resize(1920,1080);
                 $img->toJpeg(80)->save($last_img);
 
@@ -77,7 +77,7 @@ class SliderController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => 'Employee not found'
+                'message' => 'Slider not found'
             ]);
         }
     }

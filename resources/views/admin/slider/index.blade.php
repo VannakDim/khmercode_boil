@@ -6,15 +6,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        @if (session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>{{ session('success') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @endif
-
+                      
                         <div class="row">
                             @foreach ($sliders as $slider)
                                 <div class="col-md-6 col-xl-4">
@@ -36,6 +28,7 @@
             </div>
         </div>
 
+        {{-- MODAL FORM --}}
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -89,13 +82,13 @@
 @endsection
 
 @section('script')
+
     <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
     <script>
-        
 
         var SITEURL = '{{ URL::to('') }}' + '/';
 

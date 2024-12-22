@@ -51,8 +51,8 @@ Route::middleware([
     Route::get('/service/all',[ServiceController::class, 'index'])->name('all.service');
     Route::get('/service/add',[ServiceController::class, 'add'])->name('add.service');
     Route::post('/service/store',[ServiceController::class, 'store'])->name('store.service');
-    Route::get('/service/edit/{id}',[ServiceController::class, 'edit']);
-    Route::post('/service/update/{id}',[ServiceController::class, 'update']);
+    Route::get('/service/get/{id}',[ServiceController::class, 'get_service_data']);
+    Route::post('/service/update',[ServiceController::class, 'update_service'])->name('update_service');
     Route::get('/service/softDel/{id}',[ServiceController::class, 'softDelete']);
 
     Route::get('/about-item-page', function () {

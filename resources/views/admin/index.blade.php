@@ -1,8 +1,26 @@
 @extends('admin.layout.admin')
 
+@section('script')
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- Setup and start animation! -->
+    <script>
+        var typed = new Typed('.welcome-text', {
+            strings: ['WELCOME TO <i>KON KHMER</i> code.', 'WE ARE HERE TO SUPPORT YOUR BUSINESS.'],
+            typeSpeed: 70,
+            backSpeed: 30,
+            loop: true,
+        });
+    </script>
+@endsection
 @section('main_body')
     <div class="content">
         <!-- Top Statistics -->
+        <div class="row">
+            <div class="col-xl-12">
+                <h1 class="kh-koulen"><span class="welcome-text"></span></h1>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xl-3 col-sm-6">
                 <div class="card card-mini mb-4">
