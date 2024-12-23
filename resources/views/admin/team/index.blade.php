@@ -17,7 +17,7 @@
                     @foreach ($teams as $team)
                         <div class="col-md-6 col-xl-4">
                             <div class="card mb-4">
-                                <div class="card-img-contain"
+                                <div class="card-img-cover"
                                     style="background-image: url({{ asset($team->image) }});"></div>
                                 {{-- <img style="" class="card-img-top" src="{{ asset($service->service_icon) }}"> --}}
                                 <div class="card-body">
