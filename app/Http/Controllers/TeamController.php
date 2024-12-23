@@ -43,7 +43,17 @@ class TeamController extends Controller
         if ($validated->fails()) {
             return response()->json(['error' => $validated->errors()->all()]);
         }
-
+        Team::insert([
+            'name' => $request->name,
+            'position' => $request->position,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'created_at' => Carbon::now()
+        ]);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Insert success',
+        ]);
         $image = $request->file('image');
         if($image){
             $name_gen = hexdec(uniqid());
@@ -57,21 +67,10 @@ class TeamController extends Controller
             // $img->cover(1920,1080);
             $img->scale(width:500);
             // $img = $img->resize(1920,1080);
-            $img->toJpeg(80)->save($last_img);
+            // $img->toJpeg(80)->save($last_img);
         }
 
-        Team::insert([
-            'image' => $last_img,
-            'name' => $request->name,
-            'position' => $request->position,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'created_at' => Carbon::now()
-        ]);
-        return response()->json([
-            'status' => 200,
-            'message' => 'Insert success',
-        ]);
+        
     }
 
     public function update(Request $request)
