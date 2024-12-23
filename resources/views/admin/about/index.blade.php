@@ -9,54 +9,62 @@
                     <div class="col-md-12">
 
                         <div class="card card-default">
-                            <div class="card-header card-header-border-bottom" style="display: flex; justify-content:space-between">
+                            <div class="card-header card-header-border-bottom"
+                                style="display: flex; justify-content:space-between">
                                 <h2 class="kh-koulen" style="font-weight: 700">PAGE "ABOUT"</h2>
-                                <a href="{{ url('about/edit/' . $abouts->id) }}" class="btn btn-primary align-right">EDIT PAGE</a>
-                            </div>
-                            <div class="card-body">
-                                {{-- <p class="mb-5 text-muted">This is the view of about page.</p> --}}
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <div class="card-deck">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title text-primary kh-koulen">{{$abouts->title}}</h5>
-                                                    <p class="card-text pb-3 kh-battambang">{{$abouts->short_description}}</p>
-                                                    <p class="card-text">
-                                                        <small class="text-muted">Created at {{ $abouts->created_at->diffForHumans() }}</small>
-                                                    </p>
+
+                                <a href="{{ url('about/edit/' . $abouts->id) }}" class="btn btn-primary align-right">EDIT
+                                    PAGE</a>
+                                <div class="card-body">
+                                    {{-- <p class="mb-5 text-muted">This is the view of about page.</p> --}}
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="card-deck">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title text-primary kh-koulen">
+                                                            {{ $abouts->title }}</h5>
+                                                        <p class="card-text pb-3 kh-battambang">
+                                                            {{ $abouts->short_description }}</p>
+                                                        <p class="card-text">
+                                                            <small class="text-muted">Created at
+                                                                {{ $abouts->created_at->diffForHumans() }}</small>
+                                                        </p>
+                                                    </div>
+                                                    <img class="card-img-top" src="{{ asset($abouts->image) }}"
+                                                        alt="Card image cap">
+
                                                 </div>
-                                                <img class="card-img-top" src="{{ asset($abouts->image) }}" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <div class="card-deck">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <p class="kh-battambang" style="text-align: justify">
+                                                            {{ $abouts->long_description }}</p>
+                                                        @foreach ($abouts->items as $item)
+                                                            <ul>
+                                                                <li class="kh-battambang">
+                                                                    <i class="ri-check-double-line px-2"
+                                                                        style="color: #1bbd36"></i>{{ $item->about_item }}
+                                                                </li>
+                                                            </ul>
+                                                        @endforeach
+                                                        <p class="kh-battambang">{!! html_entity_decode($abouts->more_description) !!}</p>
+                                                        <p class="card-text">
+                                                            <small class="text-muted">Last updated
+                                                                {{ $abouts->updated_at->diffForHumans() }}</small>
+                                                        </p>
+                                                    </div>
+                                                </div>
 
                                             </div>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="card-deck">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <p class="kh-battambang" style="text-align: justify">{{$abouts->long_description}}</p>
-                                                    @foreach ($abouts->items as $item)
-                                                    <ul>
-                                                        <li class="kh-battambang">
-                                                        <i class="ri-check-double-line px-2" style="color: #1bbd36"></i>{{$item->about_item}}
-                                                        </li>
-                                                    </ul>
-                                                    @endforeach
-                                                    <p class="kh-battambang">{!! html_entity_decode($abouts->more_description) !!}</p>
-                                                    <p class="card-text">
-                                                        <small class="text-muted">Last updated {{ $abouts->updated_at->diffForHumans() }}</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
                             </div>
+
                         </div>
 
                         {{-- <a class="btn btn-primary btn-pill mb-6 float-right" id="add-task" href="{{ route('add.about') }}"
@@ -115,7 +123,4 @@
 
         }
     </style>
-
-    
 @endsection
-

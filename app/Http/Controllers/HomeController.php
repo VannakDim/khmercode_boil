@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Contact;
 use App\Models\Services;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +18,8 @@ class HomeController extends Controller
 
     public function about(){
         $about = About::first();
-        return view('frontend.about',compact('about'));
+        $teams = Team::all();
+        return view('frontend.about',compact('about','teams'));
     }
 
     public function contact(){

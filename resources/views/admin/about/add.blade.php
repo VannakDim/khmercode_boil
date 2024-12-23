@@ -14,14 +14,20 @@
                             <div class="card-header card-header-border-bottom">
                                 <h2>Add About</h2>
                             </div>
+
                             <div class="card-body">
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                                 <form action="{{ route('store.about') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">About title</label>
-                                        <input type="text" name="about_name" class="form-control" id="exampleInputEmail1"
+                                        <input type="text" name="title" class="form-control" id="exampleInputEmail1"
                                             placeholder="About title">
-                                        @error('about_name')
+                                        @error('title')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -29,7 +35,7 @@
                                         <label for="exampleInputEmail1">Short description</label>
                                         <input type="text" name="short_description" class="form-control"
                                             id="exampleInputEmail1" placeholder="Short description">
-                                        @error('description')
+                                        @error('short_description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -40,7 +46,7 @@
                                                 <textarea id="editor" name="long_description" class="form-control" placeholder="Long description"></textarea>
                                             </div>
                                         </div>
-                                        @error('description')
+                                        @error('long_description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

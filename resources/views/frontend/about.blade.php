@@ -24,27 +24,35 @@
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2 class="kh-koulen">{{ $about->title }}</h2>
+                            <h2 class="kh-koulen text-center">{{ $about->title }}</h2>
                         </div>
                     </div>
+                    <div class="row" style="padding: 0 75px">
+                        <img id="row-img" src="{{ asset($about->image) }}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
                     <div class="row">
                         <div class="col-lg-12">
                             <h3 class="kh-koulen">{{ $about->short_description }}</h3>
+                            <p class="kh-battambang justify">
+                                {{ $about->long_description }}
+                            </p>
+
+                            <ul>
+                                @foreach ($about->items as $item)
+                                    <li class="kh-battambang">
+                                        <i class="ri-check-double-line"></i>{{ $item->about_item }}
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <img src="{{ asset($about->image) }}" alt="">
-                    </div>
+                    
                 </div>
-                <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
-                    <p class="kh-battambang justify">
-                        {{ $about->long_description }}
-                    </p>
-                    @foreach ($about->items as $item)
-                        <ul>
-                            <li class="kh-battambang"><i class="ri-check-double-line"></i>{{ $item->about_item }}</li>
-                        </ul>
-                    @endforeach
+            </div>
+            <div class="row content">
+                <div class="col-lg-12">
                     <p class="font-italic">
                         {!! html_entity_decode($about->more_description) !!}
                     </p>
@@ -66,80 +74,26 @@
                     in iste officiis commodi quidem hic quas.</p>
             </div>
 
-            <div class="row">
-
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up">
-                        <div class="member-img">
-                            <img src="{{ asset('/img/team/team-1.jpg')}}" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href=""><i class="icofont-twitter"></i></a>
-                                <a href=""><i class="icofont-facebook"></i></a>
-                                <a href=""><i class="icofont-instagram"></i></a>
-                                <a href=""><i class="icofont-linkedin"></i></a>
+            <div class="row team-row">
+                @foreach ($teams as $team)
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                        <div class="member" data-aos="fade-up">
+                            <div class="member-img">
+                                <img src="{{ asset($team->image) }}" class="img-fluid" alt="">
+                                <div class="social">
+                                    <a href=""><i class="icofont-twitter"></i></a>
+                                    <a href=""><i class="icofont-facebook"></i></a>
+                                    <a href=""><i class="icofont-instagram"></i></a>
+                                    <a href=""><i class="icofont-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>{{ $team->name }}</h4>
+                                <span>{{ $team->position }}</span>
                             </div>
                         </div>
-                        <div class="member-info">
-                            <h4>Walter White</h4>
-                            <span>Chief Executive Officer</span>
-                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member-img">
-                            <img src="{{ asset('/img/team/team-2.jpg')}}" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href=""><i class="icofont-twitter"></i></a>
-                                <a href=""><i class="icofont-facebook"></i></a>
-                                <a href=""><i class="icofont-instagram"></i></a>
-                                <a href=""><i class="icofont-linkedin"></i></a>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <h4>Sarah Jhonson</h4>
-                            <span>Product Manager</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up" data-aos-delay="200">
-                        <div class="member-img">
-                            <img src="{{ asset('/img/team/team-3.jpg')}}" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href=""><i class="icofont-twitter"></i></a>
-                                <a href=""><i class="icofont-facebook"></i></a>
-                                <a href=""><i class="icofont-instagram"></i></a>
-                                <a href=""><i class="icofont-linkedin"></i></a>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <h4>William Anderson</h4>
-                            <span>CTO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member-img">
-                            <img src="{{ asset('/img/team/team-4.jpg')}}" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href=""><i class="icofont-twitter"></i></a>
-                                <a href=""><i class="icofont-facebook"></i></a>
-                                <a href=""><i class="icofont-instagram"></i></a>
-                                <a href=""><i class="icofont-linkedin"></i></a>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <h4>Amanda Jepson</h4>
-                            <span>Accountant</span>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
 
         </div>
@@ -238,49 +192,57 @@
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-1.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-1.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-2.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-2.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-3.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-3.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-4.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-4.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-5.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-5.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-6.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-6.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-7.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-7.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="client-logo">
-                        <img src="{{ asset('frontend/assets/img/clients/client-8.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/assets/img/clients/client-8.png') }}" class="img-fluid"
+                            alt="">
                     </div>
                 </div>
 
@@ -292,13 +254,19 @@
 
 @section('style')
     <style>
-        .row img {
+        .image-container {
+            padding: 0 20px;
+        }
+
+        #row-img {
+            display: flex;
+            align-content: center;
+            align-items: center;
             height: 100%;
             width: 100%;
         }
-
-        .kh-koulen {
-            text-align: center;
+        ol li{
+            font-family: 'battambang';
         }
     </style>
 @endsection

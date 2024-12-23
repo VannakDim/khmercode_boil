@@ -19,7 +19,7 @@
                             <h3 class="kh-koulen">{{ $about->short_description }}</h3>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="padding: 0 70px">
                         <img id="row-img" src="{{ asset($about->image) }}" alt="">
                     </div>
                 </div>
@@ -299,6 +299,9 @@
 
         .kh-koulen {
             text-align: center;
+        }
+        ol li{
+            font-family: 'battambang';
         }
     </style>
 @endsection

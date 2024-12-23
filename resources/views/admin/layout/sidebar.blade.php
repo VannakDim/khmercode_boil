@@ -36,7 +36,7 @@
 
                 @php
                     $url = Request::segment(1);
-                    $component = ['slider', 'service', 'about'];
+                    $component = ['slider', 'service', 'about', 'team'];
                     $home = ['brand'];
                 @endphp
                 <li class="has-sub @if (in_array($url, $home)) expand active @endif">
@@ -85,6 +85,14 @@
                                 <a class="sidenav-item-link" href="{{ route('all.about') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('about*') ? 'fa-beat' : '' }}"></i>
                                     <span class="nav-text">About</span>
+
+                                </a>
+                            </li>
+
+                            <li class="{{ request()->is('team*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('all.team') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('team*') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">Team</span>
 
                                 </a>
                             </li>

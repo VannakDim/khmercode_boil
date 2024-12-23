@@ -38,3 +38,25 @@ p {
 .social-link{
   font-size: 1.2rem;
 }
+
+.card-img-contain {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  height: 200px;
+}
+.card-img-cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  height: 200px;
+}
+
+.team-row{
+  display: flex;               /* Enables Flexbox */
+  justify-content: center;     /* Centers all columns horizontally */
+  align-items: center;         /* Centers all columns vertically (optional) */
+
+}
