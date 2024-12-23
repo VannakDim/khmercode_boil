@@ -45,18 +45,20 @@ class TeamController extends Controller
         }
 
         $image = $request->file('image');
-        $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($image->getClientOriginalExtension());
-        $image_name = $name_gen . '.' . $img_ext;
-        $up_location = 'image/team/';
-        $last_img = $up_location . $image_name;
-        // $image->move($up_location, $image_name);
-        $manager = new ImageManager(new Driver());
-        $img = $manager->read($image);
-        // $img->cover(1920,1080);
-        $img->scale(width:500);
-        // $img = $img->resize(1920,1080);
-        $img->toJpeg(80)->save($last_img);
+        if($image){
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($image->getClientOriginalExtension());
+            $image_name = $name_gen . '.' . $img_ext;
+            $up_location = 'image/team/';
+            $last_img = $up_location . $image_name;
+            // $image->move($up_location, $image_name);
+            $manager = new ImageManager(new Driver());
+            $img = $manager->read($image);
+            // $img->cover(1920,1080);
+            $img->scale(width:500);
+            // $img = $img->resize(1920,1080);
+            $img->toJpeg(80)->save($last_img);
+        }
 
         Team::insert([
             'image' => $last_img,
@@ -71,6 +73,7 @@ class TeamController extends Controller
             'message' => 'Insert success',
         ]);
     }
+
     public function update(Request $request)
     {
         $validated = Validator::make(
