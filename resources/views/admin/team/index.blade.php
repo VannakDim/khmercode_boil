@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <a class="btn btn-primary btn-pill mb-6 float-right" id="add-team" href="{{route('add.team')}}"
+                        <a class="btn btn-primary btn-pill mb-6 float-right" id="add-team" href="#"
                             role="button"><i class="bi bi-database-add"></i> ADD OUR TEAM </a>
                     </div>
                 </div>
@@ -142,41 +142,38 @@
                     })
             });
 
-            $('#modal-form').submit(function(e) {
-
-                $('#edit-error').hide();
-                e.preventDefault();
-                const team = new FormData(this);
-                
-                let url = isUpdate ? '/team/update' : '/team/store';
-                $.ajax({
-                    url: url ,
+            
+        });
+    </script>
+    <script>
+        document.getElementById('modal-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // Create FormData object for handling file uploads
+            const formData = new FormData(this);
+            let url = isUpdate ? '/team/update' : '/store-data';
+            try {
+                // Send data to the server
+                const response = await fetch(url, {
                     method: 'POST',
-                    data: team,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                     },
-                    success: function(response) {
-                        if (response.status === 200) {
-                            $('#modal-form')[0].reset();
-                            $('#editModal').modal('hide');
-                            location.reload();
-                        } else {
-                            $('#edit-error').find('ul').html('');
-                            $.each(response.error, function(index, val) {
-                                $('#edit-error').find('ul').append('<li>' + val +
-                                    '</li>');
-                            })
-                            $('#edit-error').show();
-                            console.log(response.error);
-                        }
-                    }
+                    body: formData // Send FormData object directly
                 });
-            });
+    
+                if (response.ok) {
+                    const result = await response.json();
+                    alert(result.message); // Display success message
+                } else {
+                    const error = await response.json();
+                    alert('Error: ' + error.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
         });
     </script>
 @endsection

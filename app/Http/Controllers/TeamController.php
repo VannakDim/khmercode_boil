@@ -54,9 +54,8 @@ class TeamController extends Controller
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image);
             $img->scale(width: 500);
-            $imagePath = $img->toJpeg(80)->save($last_img);
             // Store the uploaded image
-            // $imagePath = $request->file('image')->store('/image/team', 'public');
+            $imagePath = $img->toJpeg(80)->save($last_img);
             $validatedData['image'] = $last_img;
         }
 
