@@ -177,4 +177,33 @@
             }
         });
     </script>
+    <script>
+        // Get the input file and preview image elements
+        const imageInput = document.getElementById('edit-newimage');
+        const previewImage = document.getElementById('edit-image');
+    
+        // Listen for the file input change event
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0]; // Get the selected file
+    
+            if (file) {
+                // Create a file reader
+                const reader = new FileReader();
+    
+                // Load the image and set it as the src of the previewImage
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block'; // Make the image visible
+                };
+    
+                // Read the file as a data URL
+                reader.readAsDataURL(file);
+            } else {
+                // If no file is selected, hide the image preview
+                previewImage.src = '';
+                previewImage.style.display = 'none';
+            }
+        });
+    </script>
+    
 @endsection
