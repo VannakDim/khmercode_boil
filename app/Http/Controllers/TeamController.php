@@ -10,6 +10,8 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Laravel\Pail\ValueObjects\Origin\Console;
 
+use function Laravel\Prompts\alert;
+
 class TeamController extends Controller
 {
     public function index()
@@ -30,50 +32,34 @@ class TeamController extends Controller
     }
 
     public function store(Request $request)
+
     {
-        $validated = Validator::make(
-            $request->all(),
-            [
-                'name' => 'required|unique:Teams|max:25',
-                'position' => 'required',
-                'image' => 'required',
-            ],
-            [
-                'name.required' => 'សូមបញ្ចូលឈ្មោះ',
-            ]
-        );
-        if ($validated->fails()) {
-            return response()->json(['error' => $validated->errors()->all()]);
-        }
-        $image = $request->file('image');
-        if($image){
-            $name_gen = hexdec(uniqid());
-            $img_ext = strtolower($image->getClientOriginalExtension());
-            $image_name = $name_gen . '.' . $img_ext;
-            $up_location = 'image/team/';
-            $last_img = $up_location . $image_name;
-            // $image->move($up_location, $image_name);
-            $manager = new ImageManager(new Driver());
-            $img = $manager->read($image);
-            // $img->cover(1920,1080);
-            $img->scale(width:500);
-            // $img = $img->resize(1920,1080);
-            $img->toJpeg(80)->save($last_img);
+        // Validate the input data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'email' => 'nullable|email|unique:teams',
+            'phone' => 'nullable|unique:teams',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Optional image validation
+        ]);
+
+        // Check if an image is uploaded
+        if ($request->hasFile('image')) {
+            // Store the uploaded image
+            $imagePath = $request->file('image')->store('/image/team', 'public');
+            $validatedData['image'] = $imagePath; // Add image path to data
         }
 
-        Team::insert([
-            'image' => $last_img,
-            'name' => $request->name,
-            'position' => $request->position,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'created_at' => Carbon::now()
-        ]);
+        // Create the user with the validated data
+        $team = Team::create($validatedData);
+
+        // Return a JSON response
         return response()->json([
-            'status' => 200,
-            'message' => 'Insert success',
-        ]);
-        
+            'message' => $request->hasFile('image')
+                ? 'Data added successfully with image!'
+                : 'Data added successfully without image!',
+            'team' => $team
+        ], 200);
     }
 
     public function update(Request $request)
@@ -109,7 +95,7 @@ class TeamController extends Controller
             $last_img = $up_location . $image_name;
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image);
-            $img->cover(500,500);
+            $img->cover(500, 500);
             $img->toJpeg(80)->save($last_img);
             $old_image = $request->old_image;
             unlink($old_image);

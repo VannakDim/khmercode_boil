@@ -72,7 +72,7 @@ Route::middleware([
 
     Route::get('/team/all', [TeamController::class, 'index'])->name('all.team');
     Route::get('/team/get/{id}', [TeamController::class, 'get_team'])->name('get_team');
-    Route::post('/team/store', [TeamController::class, 'store'])->name('store.team');
+    Route::post('/store-data', [TeamController::class, 'store'])->name('store.team');
     Route::post('/team/update/', [TeamController::class, 'update'])->name('update.team');
     Route::get('/team/softDel/{id}', [TeamController::class, 'softDelete']);
     Route::get('/team/add', function () {
