@@ -151,7 +151,7 @@
             
             // Create FormData object for handling file uploads
             const formData = new FormData(this);
-            let url = isUpdate ? '/team/update' : '/store-data';
+            let url = isUpdate ? '/team/update' : '/team-store';
             try {
                 // Send data to the server
                 const response = await fetch(url, {
@@ -165,6 +165,7 @@
     
                 if (response.ok) {
                     const result = await response.json();
+                    location.reload();
                     alert(result.message); // Display success message
                 } else {
                     const error = await response.json();
