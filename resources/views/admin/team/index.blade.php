@@ -17,7 +17,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card mb-3">
                                 <div class="card-img-cover"
-                                    style="background-image: url({{ asset($team->image) }});"></div>
+                                    style="background-image: url({{ $team->image }});"></div>
                                 {{-- <img style="" class="card-img-top" src="{{ asset($service->service_icon) }}"> --}}
                                 <div class="card-body">
                                     <h5 class="card-title text-primary kh-koulen">{{ $team->name }}</h5>
