@@ -10,44 +10,52 @@
                     <div class="col-md-12">
                         <div class="card card-default">
                             <div class="card-header card-header-border-bottom">
-                                <h2>Add Service</h2>
+                                <h2>Add Team</h2>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('store.service') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('store.team') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Service name</label>
-                                        <input type="text" name="service_name" class="form-control"
-                                            id="exampleInputEmail1" placeholder="Service name">
-                                        @error('service_name')
+                                        <label for="exampleInputName">Name</label>
+                                        <input type="text" name="name" class="form-control"
+                                            id="exampleInputName" placeholder="Name">
+                                        @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Short description</label>
-                                        <input type="text" name="short_description" class="form-control"
-                                            id="exampleInputEmail1" placeholder="Service description">
-                                        @error('description')
+                                        <label for="exampleInputPosition">Position</label>
+                                        <input type="text" name="position" class="form-control"
+                                            id="exampleInputPosition" placeholder="Position">
+                                        @error('position')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Long description</label>
-                                        <textarea name="long_description" class="form-control" placeholder="Long description" rows="3"></textarea>
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" rows="3">
 
-                                        @error('description')
+                                        @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Service image</label>
+                                        <label for="exampleInputPhone">Phone</label>
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone" rows="3">
+
+                                        @error('phone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPhoto">Photo</label>
                                         <input type="file" name="image" class="form-control">
                                         @error('image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary float-right">Add Service</button>
+                                    <button type="submit" class="btn btn-primary float-right">Add Team</button>
                                     <a href="{{route('all.service')}}" class="btn btn-secondary float-right" style="margin-right: 6px">Back</a>
                                 </form>
                             </div>

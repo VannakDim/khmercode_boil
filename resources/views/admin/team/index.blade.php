@@ -1,7 +1,6 @@
 @extends('admin.layout.admin')
 @section('link')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
 @endsection
 @section('main_body')
     <div class="py-12">
@@ -9,13 +8,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <a class="btn btn-primary btn-pill mb-6 float-right" id="add-team" href="#"
+                        <a class="btn btn-primary btn-pill mb-6 float-right" id="add-team" href="{{route('add.team')}}"
                             role="button"><i class="bi bi-database-add"></i> ADD OUR TEAM </a>
                     </div>
                 </div>
                 <div class="row">
                     @foreach ($teams as $team)
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 col-md-6">
                             <div class="card mb-3">
                                 <div class="card-img-cover"
                                     style="background-image: url({{ asset($team->image) }});"></div>
@@ -149,7 +148,7 @@
                 e.preventDefault();
                 const team = new FormData(this);
                 
-                let url = isUpdate ? '/team/update' : '/team/add';
+                let url = isUpdate ? '/team/update' : '/team/store';
                 $.ajax({
                     url: url ,
                     method: 'POST',

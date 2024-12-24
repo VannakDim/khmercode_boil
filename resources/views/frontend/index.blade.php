@@ -302,6 +302,7 @@
         }
         ol li{
             font-family: 'battambang';
+            
         }
     </style>
 @endsection
