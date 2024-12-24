@@ -43,11 +43,21 @@ class TeamController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Optional image validation
         ]);
 
+        $image= $request->file('image');
         // Check if an image is uploaded
         if ($request->hasFile('image')) {
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($image->getClientOriginalExtension());
+            $image_name = $name_gen . '.' . $img_ext;
+            $up_location = 'image/team/';
+            $last_img = $up_location . $image_name;
+            $manager = new ImageManager(new Driver());
+            $img = $manager->read($image);
+            $img->scale(width: 500);
+            $imagePath = $img->toJpeg(80)->save($last_img);
             // Store the uploaded image
-            $imagePath = $request->file('image')->store('/image/team', 'public');
-            $validatedData['image'] = $imagePath; // Add image path to data
+            // $imagePath = $request->file('image')->store('/image/team', 'public');
+            $validatedData['image'] = $last_img;
         }
 
         // Create the user with the validated data
