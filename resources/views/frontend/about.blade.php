@@ -53,7 +53,7 @@
             </div>
             <div class="row content">
                 <div class="col-lg-12">
-                    <p class="font-italic">
+                    <p class="kh-battambang">
                         {!! html_entity_decode($about->more_description) !!}
                     </p>
                 </div>
