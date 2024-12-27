@@ -53,7 +53,7 @@ class TeamController extends Controller
             $last_img = $up_location . $image_name;
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image);
-            $img->cover(500,500);
+            $img->cover(700,500);
             // Store the uploaded image
             $imagePath = $img->toJpeg(80)->save($last_img);
             $validatedData['image'] = $last_img;

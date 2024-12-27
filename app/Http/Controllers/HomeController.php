@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function about(){
         $about = About::first();
-        $teams = Team::all();
+        $teams = Team::all()->sortBy('order');
         return view('frontend.about',compact('about','teams'));
     }
 
