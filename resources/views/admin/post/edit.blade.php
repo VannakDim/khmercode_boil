@@ -12,7 +12,7 @@
                     <div class="col-md-12">
                         <div class="card card-default">
                             <div class="card-header card-header-border-bottom">
-                                <h2>Add Blog</h2>
+                                <h2>Edit Blog</h2>
                             </div>
 
                             <div class="card-body">
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Content</label>
-                                            <textarea id="editor" name="content" class="form-control" placeholder="Content" rows="5"></textarea>
+                                            <textarea id="editor" name="content" class="form-control" placeholder="Content" rows="5">{{$post->content}}</textarea>
                                         @error('content')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
