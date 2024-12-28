@@ -14,11 +14,7 @@
         <div class="container">
   
           <div class="d-flex justify-content-between align-items-center">
-            <h2>Blog</h2>
-            <ol>
-              <li><a href="index.html">Home</a></li>
-              <li>Blog</li>
-            </ol>
+            <h2 class="kh-koulen">{{$post->title}}</h2>
           </div>
   
         </div>

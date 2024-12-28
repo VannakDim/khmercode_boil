@@ -40,7 +40,7 @@
                 </div>
   
                 <h2 class="entry-title">
-                  <a href="blog/{{ $post->id }}">{{ $post->title }}</a>
+                  <a class="kh-koulen" href="blog/{{ $post->id }}">{{ $post->title }}</a>
                 </h2>
   
                 <div class="entry-meta">
