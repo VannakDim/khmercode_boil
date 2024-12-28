@@ -36,6 +36,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->status = 'draft';
+        $post->content = $request->content;
         $post->user_id = Auth::user()->id;
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -61,6 +62,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->status = 'draft';
+        $post->content = $request->content;
         $post->user_id = Auth::user()->id;
         if($request->hasFile('image')){
             $image = $request->file('image');
