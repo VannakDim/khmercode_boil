@@ -41,11 +41,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Content</label>
-                                        <div class="editor-container editor-container_classic-editor" id="editor-container">
-                                            <div class="editor-container__editor">
-                                                <textarea id="editor" name="content" class="form-control" placeholder="Content"></textarea>
-                                            </div>
-                                        </div>
+                                        
+                                            <textarea id="editor" name="content" class="form-control" placeholder="Content" rows="5"></textarea>
+                                  
                                         @error('content')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -71,8 +69,4 @@
         </div>
     </div>
 @endsection
-@section('script')
-    <script src="https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.umd.js" crossorigin></script>
-    <script src="https://cdn.ckbox.io/ckbox/2.6.1/ckbox.js" crossorigin></script>
-    <script src="{{ asset('backend/assets/js/main.js') }}"></script>
-@endsection
+
