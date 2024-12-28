@@ -2,10 +2,10 @@
 
 @section('meta')
     <title>{{ $meta->title ?? 'KON KHMER CODE' }}</title>
-    <meta name="description" content="{{ $meta->description ?? 'Default description' }}">
-    <meta property="og:title" content="{{ $meta->title ?? 'Default Title' }}">
-    <meta property="og:description" content="{{ $meta->description ?? 'Default description' }}">
-    <meta property="og:image" content="{{ asset($meta->image ?? '/default.jpg') }}">
+    <meta name="description" content="{{ $meta->description ?? 'កូនខ្មែរកូដ ផ្តល់ជូនលោកអ្នកនូវសេវាកម្មល្អឥតខ្ចោះក្នុងការបង្កើតគេហទំព័រផ្លូវការ' }}">
+    <meta property="og:title" content="{{ $meta->title ?? 'កូនខ្មែរកូដ' }}">
+    <meta property="og:description" content="{{ $meta->description ?? 'កូនខ្មែរកូដ ផ្តល់ជូនលោកអ្នកនូវសេវាកម្មល្អឥតខ្ចោះក្នុងការបង្កើតគេហទំព័រផ្លូវការ' }}">
+    <meta property="og:image" content="{{ asset($meta->image ?? 'frontend/assets/img/default.jpg') }}">
 @endsection
 
 @section('content')
