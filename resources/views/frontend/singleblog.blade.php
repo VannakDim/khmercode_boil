@@ -35,7 +35,7 @@
                 </div>
   
                 <h2 class="entry-title">
-                  <a href="blog-single.html" class="kh-koulen">{{$post->title}}</a>
+                  <a href="blog-single.html" class="kh-battambang">{{$post->title}}</a>
                 </h2>
   
                 <div class="entry-meta">
