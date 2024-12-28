@@ -32,6 +32,20 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="tags">Tags:</label>
+                                        <select name="tags[]" id="tags" class="form-control" multiple="multiple">
+                                            @foreach($tags as $tag)
+                                                <option value="{{ $tag->name }}" 
+                                                    @if($post->tags->contains($tag->id)) selected @endif>
+                                                    {{ $tag->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('tags')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">Description</label>
                                         <textarea name="description" class="form-control"
                                             id="exampleInputEmail1" placeholder="Description" rows="3">{{$post->description}}</textarea>
@@ -66,4 +80,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('#tags').select2({
+            tags: true, // Allow new tags
+            placeholder: "Select or add tags",
+            tokenSeparators: [',', ' ']
+        });
+    });
+</script>
 @endsection

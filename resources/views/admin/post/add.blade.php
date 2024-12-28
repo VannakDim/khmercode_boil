@@ -2,7 +2,9 @@
 @section('link')
     {{-- CK Editor --}}
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.css" crossorigin>
-@endsection
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+    @endsection
 
 @section('main_body')
     <div class="py-12">
@@ -32,6 +34,17 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="tags">Tags:</label>
+                                        <select name="tags[]" id="tags" class="form-control" multiple="multiple">
+                                            @foreach($tags as $tag)
+                                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('tags')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">Description</label>
                                         <input type="text" name="description" class="form-control"
                                             id="exampleInputEmail1" placeholder="Description">
@@ -41,9 +54,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Content</label>
-                                        
-                                            <textarea id="editor" name="content" class="form-control" placeholder="Content" rows="5"></textarea>
-                                  
+
+                                        <textarea id="editor" name="content" class="form-control" placeholder="Content" rows="5"></textarea>
+
                                         @error('content')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -70,3 +83,14 @@
     </div>
 @endsection
 
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('#tags').select2({
+            tags: true, // Allow new tags
+            placeholder: "Select or add tags",
+            tokenSeparators: [',', ' ']
+        });
+    });
+</script>
+@endsection
