@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\Contact;
 use App\Models\Services;
 use App\Models\Team;
@@ -18,7 +19,8 @@ class HomeController extends Controller
     }
     public function blog(){
         $posts = Post::all();
-        return view('frontend.blog',compact('posts'));
+        $tags = Tag::all();
+        return view('frontend.blog',compact('posts','tags'));
     }
     public function singleblog($id){
         $post = Post::find($id);
