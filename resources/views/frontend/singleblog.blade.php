@@ -61,6 +61,7 @@
                     <ul class="tags">
                       @foreach ($post->tags as $tag)
                           <li><a href="#">{{$tag->name}}</a></li>
+                      @endforeach
                       {{-- <li><a href="#">Creative</a></li>
                       <li><a href="#">Tips</a></li>
                       <li><a href="#">Marketing</a></li> --}}
