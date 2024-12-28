@@ -31,36 +31,35 @@
           <div class="row">
   
             <div class="col-lg-8 entries">
-  
+              @foreach ($posts as $post)
+                
               <article class="entry" data-aos="fade-up">
   
                 <div class="entry-img">
-                  <img src="{{ asset('frontend/assets/img/blog-1.jpg') }}" alt="" class="img-fluid">
+                  <img src="{{ asset($post->image) }}" alt="" class="img-fluid">
                 </div>
   
                 <h2 class="entry-title">
-                  <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia reiciendis</a>
+                  <a href="blog/{{ $post->id }}">{{ $post->title }}</a>
                 </h2>
   
                 <div class="entry-meta">
                   <ul>
-                    <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
-                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                    <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">{{$post->user->name}}</a></li>
+                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{$post->created_at->diffForHumans()}}</time></a></li>
                     <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
                   </ul>
                 </div>
   
                 <div class="entry-content">
-                  <p>
-                    Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                    Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-                  </p>
+                  <p>{{ $post->description }}</p>
                   <div class="read-more">
-                    <a href="{{ route('home.blog.single')}}">Read More</a>
+                    <a href="blog/{{$post->id}}">Read More</a>
                   </div>
                 </div>
   
               </article><!-- End blog entry -->
+              @endforeach
   
               <article class="entry" data-aos="fade-up">
   

@@ -10,10 +10,7 @@ use Illuminate\Support\Carbon;
 class BrandController extends Controller
 {
 
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
+    
     public function index(){
         $brands = Brand::latest()->paginate(5);
         $trashCat = Brand::onlyTrashed()->latest()->paginate(3);

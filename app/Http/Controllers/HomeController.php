@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Post;
 use App\Models\Contact;
 use App\Models\Services;
 use App\Models\Team;
@@ -16,12 +17,12 @@ class HomeController extends Controller
         return view('frontend.index',compact('about','services'));
     }
     public function blog(){
-        
-        return view('frontend.blog');
+        $posts = Post::all();
+        return view('frontend.blog',compact('posts'));
     }
-    public function singleblog(){
-        
-        return view('frontend.singleblog');
+    public function singleblog($id){
+        $post = Post::find($id);
+        return view('frontend.singleblog',compact('post'));
     }
 
     public function about(){

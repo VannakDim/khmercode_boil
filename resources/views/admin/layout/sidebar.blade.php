@@ -37,6 +37,7 @@
                 @php
                     $url = Request::segment(1);
                     $component = ['slider', 'service', 'about', 'team'];
+                    $blog = ['post', 'tag', 'category'];
                     $home = ['brand'];
                 @endphp
                 <li class="has-sub @if (in_array($url, $home)) expand active @endif">
@@ -108,6 +109,43 @@
 
 
 
+                        </div>
+                    </ul>
+                </li>
+
+                <li class="has-sub @if (in_array($url, $blog)) expand active @endif">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#blogs"
+                        aria-expanded="false" aria-controls="blogs">
+                        <i class="fa-solid fa-signs-post"></i>
+                        <span class="nav-text">Blog</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse @if (in_array($url, $blog)) show @endif" id="blogs"
+                        data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+
+                            <li class="{{ request()->is('post*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('all.post') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('post*') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">Post</span>
+
+                                </a>
+                            </li>
+
+                            <li class="{{ request()->is('tag*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('all.about') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('tag*') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">Tag</span>
+
+                                </a>
+                            </li>
+
+                            <li class="{{ request()->is('category*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('all.team') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('category*') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">Category</span>
+
+                                </a>
+                            </li>
                         </div>
                     </ul>
                 </li>

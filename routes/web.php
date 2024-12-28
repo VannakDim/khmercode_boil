@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TeamController;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/blog', [HomeController::class, 'blog'])->name('home.blog');
-Route::get('/blog/single', [HomeController::class, 'singleblog'])->name('home.blog.single');
+Route::get('/blog/{id}', [HomeController::class, 'singleblog'])->name('home.blog.single');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
@@ -80,6 +81,13 @@ Route::middleware([
     Route::get('/team/add', function () {
         return view('admin.team.add');
     })->name('add.team');
+
+    Route::get('/post/all', [PostController::class, 'index'])->name('all.post');
+    Route::get('/post/edit/{id}', [PostController::class, 'page_edit']);
+    Route::get('/post/add', [PostController::class, 'page_add'])->name('page.add-post');
+    Route::post('/post/store', [PostController::class, 'store'])->name('store.post');
+    Route::post('/post/update/{id}', [PostController::class, 'update']);
+    Route::get('/post/softDel/{id}', [PostController::class, 'softDelete']);
 
 
     Route::get('/logout', [UserAuthController::class, 'logout'])->name('user.logout');
