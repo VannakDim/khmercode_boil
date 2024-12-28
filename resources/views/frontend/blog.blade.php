@@ -169,8 +169,8 @@
   
                 <h3 class="sidebar-title">Search</h3>
                 <div class="sidebar-item search-form">
-                  <form action="">
-                    <input type="text">
+                  <form action="{{ route('search') }}" method="GET">
+                    <input type="text" name="q" placeholder="Search..." value="{{ request('q') }}">
                     <button type="submit"><i class="icofont-search"></i></button>
                   </form>
   

@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $validated=$request->validate([
             'title' => 'required',
-            'tags' => 'required|array',
+            'tags' => 'nullable|array',
             'tags.*' => 'string|max:50',
             'description' => 'required',
             'content' => 'nullable',

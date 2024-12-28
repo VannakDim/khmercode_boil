@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TeamController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/blog', [HomeController::class, 'blog'])->name('home.blog');
 Route::get('/blog/{id}', [HomeController::class, 'singleblog'])->name('home.blog.single');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
