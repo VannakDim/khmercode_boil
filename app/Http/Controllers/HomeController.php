@@ -23,8 +23,9 @@ class HomeController extends Controller
         return view('frontend.blog',compact('posts','tags'));
     }
     public function singleblog($id){
+        $tags = Tag::all();
         $post = Post::find($id);
-        return view('frontend.singleblog',compact('post'));
+        return view('frontend.singleblog',compact('post','tags'));
     }
 
     public function about(){
