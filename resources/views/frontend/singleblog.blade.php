@@ -59,9 +59,11 @@
   
                     <i class="icofont-tags"></i>
                     <ul class="tags">
-                      <li><a href="#">Creative</a></li>
+                      @foreach ($post->tags as $tag)
+                          <li><a href="#">{{$tag->name}}</a></li>
+                      {{-- <li><a href="#">Creative</a></li>
                       <li><a href="#">Tips</a></li>
-                      <li><a href="#">Marketing</a></li>
+                      <li><a href="#">Marketing</a></li> --}}
                     </ul>
                   </div>
   
