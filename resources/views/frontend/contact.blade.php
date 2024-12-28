@@ -3,6 +3,14 @@
     $map = DB::table('contacts')->first();
 @endphp
 
+@section('meta')
+    <title>{{ $meta->title ?? 'KON KHMER CODE' }}</title>
+    <meta name="description" content="{{ $meta->description ?? 'Default description' }}">
+    <meta property="og:title" content="{{ $meta->title ?? 'Default Title' }}">
+    <meta property="og:description" content="{{ $meta->description ?? 'Default description' }}">
+    <meta property="og:image" content="{{ asset($meta->image ?? '/default.jpg') }}">
+@endsection
+
 @section('content')
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">

@@ -1,7 +1,15 @@
 @extends('frontend.layout.web')
 
+@section('meta')
+    <title>{{ $meta->title ?? 'KON KHMER CODE' }}</title>
+    <meta name="description" content="{{ $meta->description ?? 'កូនខ្មែរកូដ ផ្តល់ជូនលោកអ្នកនូវសេវាកម្មល្អឥតខ្ចោះក្នុងការបង្កើតគេហទំព័រផ្លូវការ' }}">
+    <meta property="og:title" content="{{ $meta->title ?? 'កូនខ្មែរកូដ' }}">
+    <meta property="og:description" content="{{ $meta->description ?? 'កូនខ្មែរកូដ ផ្តល់ជូនលោកអ្នកនូវសេវាកម្មល្អឥតខ្ចោះក្នុងការបង្កើតគេហទំព័រផ្លូវការ' }}">
+    <meta property="og:image" content="{{ asset($meta->image ?? 'frontend/assets/img/default.jpg') }}">
+@endsection
+
 @section('content')
-@include('frontend.layout.slider')
+    @include('frontend.layout.slider')
 
     <!-- ======= About Us Section ======= -->
     <section id="about-us" class="about-us">
@@ -28,7 +36,7 @@
                         {{ $about->long_description }}
                     </p>
                     @foreach ($about->items as $item)
-                        <ul  style="margin-bottom: 0">
+                        <ul style="margin-bottom: 0">
                             <li class="kh-battambang"><i class="ri-check-double-line"></i>{{ $item->about_item }}</li>
                         </ul>
                     @endforeach
@@ -122,8 +130,9 @@
                     <div class="portfolio-info">
                         <h4>App 2</h4>
                         <p>App</p>
-                        <a href="{{ asset('frontend/assets/img/portfolio/portfolio-3.jpg') }}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+                        <a href="{{ asset('frontend/assets/img/portfolio/portfolio-3.jpg') }}"
+                            data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i
+                                class="bx bx-plus"></i></a>
                         <a href="portfolio-details.html" class="details-link" title="More Details"><i
                                 class="bx bx-link"></i></a>
                     </div>
@@ -300,9 +309,10 @@
         .kh-koulen {
             text-align: center;
         }
-        ol li{
+
+        ol li {
             font-family: 'battambang';
-            
+
         }
     </style>
 @endsection

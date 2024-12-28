@@ -5,9 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>កូនខ្មែរ អ្នកស្រលាញ់កូដ</title>
-    <meta content="" name="descriptison">
-    <meta content="" name="keywords">
+    @yield('meta')
 
     <!-- Favicons -->
     <link href="{{ asset('frontend/assets/img/favicon.png') }}" rel="icon">
