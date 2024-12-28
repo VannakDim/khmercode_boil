@@ -19,6 +19,10 @@ class HomeController extends Controller
         
         return view('frontend.blog');
     }
+    public function singleblog(){
+        
+        return view('frontend.singleblog');
+    }
 
     public function about(){
         $about = About::first();
