@@ -68,10 +68,7 @@
 
             <div class="section-title" data-aos="fade-up">
                 <h2>Our <strong>Team</strong></h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-                    sit
-                    in iste officiis commodi quidem hic quas.</p>
+                <p>ខាងក្រោមនេះជាក្រុមការងារយើងខ្ញុំដែលមានបទពិសោធន៍ជាច្រើនឆ្នាំ និងឯកទេសក្នុងការងារនេះ ហើយរង់ចាំផ្តល់ជូនលោកអ្នកនូវសេវាកម្មយ៉ាងល្អឥតខ្ចោះ តាមគ្រប់តម្រូវការងារអាជីវកម្មរបស់លោកអ្នក</p>
             </div>
 
             <div class="row team-row">
