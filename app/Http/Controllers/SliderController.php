@@ -15,7 +15,7 @@ use function Laravel\Prompts\alert;
 class SliderController extends Controller
 {
     public function index(){
-        $sliders = Slider::latest()->paginate(5);
+        $sliders = Slider::all();
         $trash = Slider::onlyTrashed()->latest();
         return view('admin.slider.index',compact('sliders','trash'));
     }
