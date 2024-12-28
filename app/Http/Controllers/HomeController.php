@@ -15,6 +15,10 @@ class HomeController extends Controller
         $services = Services::all();
         return view('frontend.index',compact('about','services'));
     }
+    public function blog(){
+        
+        return view('frontend.blog');
+    }
 
     public function about(){
         $about = About::first();
