@@ -25,24 +25,44 @@
                                 @endif
                                 <form action="{{ route('store.post') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Blog title</label>
-                                        <input type="text" name="title" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Blog title">
-                                        @error('title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tags">Tags:</label>
-                                        <select name="tags[]" id="tags" class="form-control" multiple="multiple">
-                                            @foreach($tags as $tag)
-                                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('tags')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Blog title</label>
+                                                <input type="text" name="title" class="form-control" id="exampleInputEmail1"
+                                                    placeholder="Blog title">
+                                                @error('title')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tags">Tags:</label>
+                                                <select name="tags[]" id="tags" class="form-control" multiple="multiple">
+                                                    @foreach($tags as $tag)
+                                                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('tags')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="featured">Featured</label>
+                                                <input type="checkbox" name="featured" id="featured" value="@if (true) 1 @else 0 @endif">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Blog image</label>
+                                                <input type="file" name="image" id="input-image" class="form-control">
+                                                @error('image')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="post-img" id="img-preview" style="display: flex; justify-content: center; align-items: center; background-image: url({{asset('backend/assets/img/default-image.avif')}}); background-size: cover; background-position: center; width: 100%; height: 100%;">
+                                                {{-- <img id="img-preview" src="" alt="Image Preview" style="max-width: 100%;max-height: 350px;object-fit: cover;"> --}}
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Description</label>
@@ -58,13 +78,6 @@
                                         <textarea id="editor" name="content" class="form-control" placeholder="Content" rows="5"></textarea>
 
                                         @error('content')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Blog image</label>
-                                        <input type="file" name="image" class="form-control">
-                                        @error('image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -91,6 +104,35 @@
             placeholder: "Select or add tags",
             tokenSeparators: [',', ' ']
         });
+    });
+</script>
+<script>
+    // Get the input file and preview image elements
+    const default_img = '{{ URL::to('') }}' + '/backend/assets/img/default-image.avif';
+    const imageInput = document.getElementById('input-image');
+    const previewImage = document.getElementById('img-preview');
+
+    // Listen for the file input change event
+    imageInput.addEventListener('change', function(event) {
+        const file = event.target.files[0]; // Get the selected file
+
+        if (file) {
+            // Create a file reader
+            const reader = new FileReader();
+
+            // Load the image and set it as the src of the previewImage
+            reader.onload = function(e) {
+                previewImage.style.backgroundImage = `url('${e.target.result}')`;
+                previewImage.style.display = 'block'; // Make the image visible
+            };
+
+            // Read the file as a data URL
+            reader.readAsDataURL(file);
+        } else {
+            // If no file is selected, hide the image preview
+            previewImage.style.backgroundImage = `url('${default_img}')`;
+            previewImage.style.display = 'none';
+        }
     });
 </script>
 @endsection

@@ -34,6 +34,7 @@ class PostController extends Controller
             'tags.*' => 'string|max:50',
             'description' => 'required',
             'content' => 'nullable',
+            'is_featured' => 'nullable|boolean',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         // Create or fetch tags
@@ -45,6 +46,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->status = 'draft';
         $post->content = $request->content;
+        $post->is_featured = $request->featured?1:0;
         $post->user_id = Auth::user()->id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -67,6 +69,7 @@ class PostController extends Controller
             'tags.*' => 'string|max:50',
             'description' => 'required',
             'content' => 'nullable',
+            'is_featured' => 'nullable|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         // Create or fetch tags
@@ -78,6 +81,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->status = 'draft';
         $post->content = $request->content;
+        $post->is_featured = $request->featured?1:0;
         $post->user_id = Auth::user()->id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
