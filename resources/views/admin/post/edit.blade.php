@@ -60,7 +60,7 @@
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Blog image</label>
-                                                <input type="file" name="image" class="form-control" style="border: rgb(209, 215, 221) 0.1px solid;">
+                                                <input id="input-image" type="file" name="image" class="form-control" style="border: rgb(209, 215, 221) 0.1px solid;">
                                                 @error('image')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -68,7 +68,7 @@
 
                                         </div>
                                         <div class="col-lg-6">
-                                            <div style="display: flex; justify-content: center; align-items: center; background-image: url({{asset($post->image)}}); background-size: cover; background-position: center; width: 100%; height: 100%;">
+                                            <div id="img-preview" style="display: flex; justify-content: center; align-items: center; background-image: url({{asset($post->image)}}); background-size: cover; background-position: center; width: 100%; height: 100%;">
                                         </div>
                                             {{-- <img src="{{ asset($post->image) }}" alt="" style="width: 100%"> --}}
                                         </div>
@@ -114,6 +114,35 @@
                 placeholder: "Select or add tags",
                 tokenSeparators: [',', ' ']
             });
+        });
+    </script>
+    <script>
+        // Get the input file and preview image elements
+        const default_img = '{{ URL::to('') }}' + '/backend/assets/img/default-image.avif';
+        const imageInput = document.getElementById('input-image');
+        const previewImage = document.getElementById('img-preview');
+    
+        // Listen for the file input change event
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0]; // Get the selected file
+    
+            if (file) {
+                // Create a file reader
+                const reader = new FileReader();
+    
+                // Load the image and set it as the src of the previewImage
+                reader.onload = function(e) {
+                    previewImage.style.backgroundImage = `url('${e.target.result}')`;
+                    previewImage.style.display = 'block'; // Make the image visible
+                };
+    
+                // Read the file as a data URL
+                reader.readAsDataURL(file);
+            } else {
+                // If no file is selected, hide the image preview
+                previewImage.style.backgroundImage = `url('${default_img}')`;
+                previewImage.style.display = 'none';
+            }
         });
     </script>
 @endsection
