@@ -34,6 +34,7 @@ class PostController extends Controller
             'tags.*' => 'string|max:50',
             'description' => 'required',
             'content' => 'nullable',
+            'status' => 'required',
             'is_featured' => 'nullable|boolean',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -44,7 +45,7 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->status = 'draft';
+        $post->status = $request->status;
         $post->content = $request->content;
         $post->is_featured = $request->featured?1:0;
         $post->user_id = Auth::user()->id;
@@ -65,6 +66,7 @@ class PostController extends Controller
     {
         $validated=$request->validate([
             'title' => 'required',
+            'status' => 'required',
             'tags' => 'required|array',
             'tags.*' => 'string|max:50',
             'description' => 'required',
@@ -79,7 +81,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->status = 'draft';
+        $post->status = $request->status;
         $post->content = $request->content;
         $post->is_featured = $request->featured?1:0;
         $post->user_id = Auth::user()->id;

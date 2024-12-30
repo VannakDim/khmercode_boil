@@ -18,7 +18,7 @@ class HomeController extends Controller
         return view('frontend.index',compact('about','services'));
     }
     public function blog(){
-        $posts = Post::all();
+        $posts = Post::where('status',"public")->get()->sortByDesc('id');
         $tags = Tag::all();
         return view('frontend.blog',compact('posts','tags'));
     }

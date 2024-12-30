@@ -59,6 +59,14 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label for="exampleFormControlSelect12">Publish status:</label>
+                                                <select name="status" class="form-control" id="exampleFormControlSelect12">
+                                                    <option value="public" {{ $post->status =='public' ? 'selected' : '' }}>Public</option>
+                                                    <option value="draft" {{ $post->status =='draft' ? 'selected' : '' }}>Draft</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label for="exampleInputEmail1">Blog image</label>
                                                 <input id="input-image" type="file" name="image" class="form-control" style="border: rgb(209, 215, 221) 0.1px solid;">
                                                 @error('image')

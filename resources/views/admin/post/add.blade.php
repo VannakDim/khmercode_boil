@@ -50,6 +50,14 @@
                                                 <label for="featured">Featured</label>
                                                 <input type="checkbox" name="featured" id="featured" value="@if (true) 1 @else 0 @endif">
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect12">Publish status:</label>
+                                                <select name="status" class="form-control" id="exampleFormControlSelect12">
+                                                    <option value="public">Public</option>
+                                                    <option value="draft" selected>Draft</option>
+                                                </select>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Blog image</label>
                                                 <input type="file" name="image" id="input-image" class="form-control">

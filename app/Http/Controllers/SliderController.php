@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
-use function Laravel\Prompts\alert;
-
 class SliderController extends Controller
 {
     public function index(){
