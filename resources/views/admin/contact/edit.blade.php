@@ -117,7 +117,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Youtube</label>
                                                 <input type="text" name="youtube" class="form-control" 
-                                                    placeholder="Linkin" value="{{ $contact->youtube }}">
+                                                    placeholder="Youtube" value="{{ $contact->youtube }}">
                                                 @error('youtube')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
