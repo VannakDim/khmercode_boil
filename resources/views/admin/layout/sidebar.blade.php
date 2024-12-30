@@ -36,7 +36,7 @@
 
                 @php
                     $url = Request::segment(1);
-                    $component = ['slider', 'service', 'about', 'team'];
+                    $component = ['slider', 'service', 'about', 'team','contact'];
                     $blog = ['post', 'tag', 'category'];
                     $home = ['brand'];
                 @endphp

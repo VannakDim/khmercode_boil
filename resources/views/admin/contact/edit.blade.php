@@ -13,7 +13,11 @@
                             <div class="card-header card-header-border-bottom">
                                 <h2>Edit Contact</h2>
                             </div>
-
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                             <div class="card-body">
                                 @if (session('error'))
                                     <div class="alert alert-danger">

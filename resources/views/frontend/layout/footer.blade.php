@@ -65,11 +65,25 @@
             </div>
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            @if ($contact->facebook)
+                <a href="{{ $contact->facebook }}" class="facebook"><i class="bx bxl-facebook"></i></a> 
+            @endif
+            @if ($contact->instagram)
+                <a href="{{ $contact->instagram }}" class="instagram"><i class="bx bxl-instagram"></i></a> 
+            @endif
+            @if ($contact->telegram)
+                <a href="{{ $contact->telegram }}" class="telegram"><i class="bx bxl-telegram"></i></a>
+            @endif
+            @if ($contact->twitter)
+                <a href="{{ $contact->twitter }}" class="twitter"><i class="bx bxl-twitter"></i></a>
+            @endif
+            @if ($contact->linkedin)
+                <a href="{{ $contact->linkedin }}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            @endif
+            @if ($contact->youtube)
+                <a href="{{ $contact->youtube }}" class="youtube"><i class="bx bxl-youtube"></i></a>
+            @endif
+            
         </div>
     </div>
 </footer><!-- End Footer -->
