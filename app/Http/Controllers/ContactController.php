@@ -16,20 +16,31 @@ class ContactController extends Controller
         return view('admin.contact.edit',compact('contact'));
     }
 
-    public function update(Request $request){
-        $contact = Contact::first();
-        $contact->update([
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'address' => $request->address,
-            'map' => $request->map,
-            'telegram' => $request->telegram,
-            'facebook' => $request->facebook,
-            'twitter' => $request->twitter,
-            'linkedin' => $request->linkedin,
-            'instagram' => $request->instagram,
-            'youtube' => $request->youtube,
+    public function update( Request $request, $id){
+        $request->validate([
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'map' => 'required',
+            'telegram' => 'nullable',
+            'facebook' => 'nullable',
+            'twitter' => 'nullable',
+            'linkedin' => 'nullable',
+            'instagram' => 'nullable',
+            'youtube' => 'nullable',
         ]);
+        $contact = Contact::find($id);
+        $contact->phone = $request->phone;
+        $contact->email = $request->email;
+        $contact->address = $request->address;
+        $contact->map = $request->map;
+        $contact->telegram = $request->telegram;
+        $contact->facebook = $request->facebook;
+        $contact->twitter = $request->twitter;
+        $contact->linkedin = $request->linkedin;
+        $contact->instagram = $request->instagram;
+        $contact->youtube = $request->youtube;
+        $contact->save();
         return back()->with('success','Contact Information Updated Successfully');
     }
 }
