@@ -66,22 +66,22 @@
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
             @if ($contact->facebook)
-                <a href="{{ $contact->facebook }}" class="facebook"><i class="bx bxl-facebook"></i></a> 
+                <a href="{{ $contact->facebook }}" target="_blank" rel="noopener noreferrer" class="facebook"><i class="bx bxl-facebook"></i></a> 
             @endif
             @if ($contact->instagram)
-                <a href="{{ $contact->instagram }}" class="instagram"><i class="bx bxl-instagram"></i></a> 
+                <a href="{{ $contact->instagram }}" target="_blank" rel="noopener noreferrer" class="instagram"><i class="bx bxl-instagram"></i></a> 
             @endif
             @if ($contact->telegram)
-                <a href="{{ $contact->telegram }}" class="telegram"><i class="bx bxl-telegram"></i></a>
+                <a href="{{ $contact->telegram }}" target="_blank" rel="noopener noreferrer" class="telegram"><i class="bx bxl-telegram"></i></a>
             @endif
             @if ($contact->twitter)
-                <a href="{{ $contact->twitter }}" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="{{ $contact->twitter }}" target="_blank" rel="noopener noreferrer" class="twitter"><i class="bx bxl-twitter"></i></a>
             @endif
             @if ($contact->linkedin)
-                <a href="{{ $contact->linkedin }}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="{{ $contact->linkedin }}" target="_blank" rel="noopener noreferrer" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             @endif
             @if ($contact->youtube)
-                <a href="{{ $contact->youtube }}" class="youtube"><i class="bx bxl-youtube"></i></a>
+                <a href="{{ $contact->youtube }}" target="_blank" rel="noopener noreferrer" class="youtube"><i class="bx bxl-youtube"></i></a>
             @endif
             
         </div>
