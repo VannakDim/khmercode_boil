@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
@@ -83,6 +84,9 @@ Route::middleware([
     Route::get('/team/add', function () {
         return view('admin.team.add');
     })->name('add.team');
+
+    Route::get('/contact/edit', [ContactController::class, 'edit'])->name('edit.contact');
+    Route::post('/contact/update/{id}', [ContactController::class, 'update']);
 
     Route::get('/post/all', [PostController::class, 'index'])->name('all.post');
     Route::get('/post/edit/{id}', [PostController::class, 'page_edit']);

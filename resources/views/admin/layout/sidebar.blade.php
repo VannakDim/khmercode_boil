@@ -77,7 +77,7 @@
                             <li class="{{ request()->is('slider*') ? 'active' : '' }}">
                                 <a class="sidenav-item-link" href="{{ route('all.slider') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('slider*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text">Slider</span>
+                                    <span class="nav-text">SLIDER</span>
 
                                 </a>
                             </li>
@@ -85,7 +85,7 @@
                             <li class="{{ request()->is('about*') ? 'active' : '' }}">
                                 <a class="sidenav-item-link" href="{{ route('all.about') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('about*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text">About</span>
+                                    <span class="nav-text">ABOUT</span>
 
                                 </a>
                             </li>
@@ -93,7 +93,7 @@
                             <li class="{{ request()->is('team*') ? 'active' : '' }}">
                                 <a class="sidenav-item-link" href="{{ route('all.team') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('team*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text">Team</span>
+                                    <span class="nav-text">TEAM</span>
 
                                 </a>
                             </li>
@@ -102,7 +102,15 @@
                             <li class="{{ request()->is('service*') ? 'active' : '' }}">
                                 <a class="sidenav-item-link" href="{{ route('all.service') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('service*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text"> Services</span>
+                                    <span class="nav-text"> SERVICES</span>
+
+                                </a>
+                            </li>
+
+                            <li class="{{ request()->is('contact*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('edit.contact') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('contact*') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text"> CONTACT</span>
 
                                 </a>
                             </li>
@@ -117,7 +125,7 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#blogs"
                         aria-expanded="false" aria-controls="blogs">
                         <i class="fa-solid fa-signs-post"></i>
-                        <span class="nav-text">Blog</span> <b class="caret"></b>
+                        <span class="nav-text">BLOGS</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse @if (in_array($url, $blog)) show @endif" id="blogs"
                         data-parent="#sidebar-menu">
@@ -126,7 +134,7 @@
                             <li class="{{ request()->is('post*') ? 'active' : '' }}">
                                 <a class="sidenav-item-link" href="{{ route('all.post') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('post*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text">Post</span>
+                                    <span class="nav-text">POSTS</span>
 
                                 </a>
                             </li>
@@ -134,7 +142,7 @@
                             <li class="{{ request()->is('tag*') ? 'active' : '' }}">
                                 <a class="sidenav-item-link" href="{{ route('all.about') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('tag*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text">Tag</span>
+                                    <span class="nav-text">TAGS</span>
 
                                 </a>
                             </li>
@@ -142,7 +150,7 @@
                             <li class="{{ request()->is('category*') ? 'active' : '' }}">
                                 <a class="sidenav-item-link" href="{{ route('all.team') }}">
                                     <i class="fa-solid fa-caret-right {{ request()->is('category*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text">Category</span>
+                                    <span class="nav-text">CATEGORIES</span>
 
                                 </a>
                             </li>
