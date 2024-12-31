@@ -32,9 +32,21 @@ class SearchController extends Controller
                 'tags' => $tags,
                 // 'comments' => $comments,
             ];
+            // dd($results);
             return view('frontend.blog_search', compact('results', 'query'));
         }
         return redirect()->back();
 
+    }
+
+    public function filter_by_tag($tag)
+    {
+        $tags = Tag::where('name', $tag)->first();
+        if($tags){
+            $posts = $tags->posts;
+            $tags = Tag::all();
+            return view('frontend.blog',compact('posts','tags'));
+        }
+        return redirect()->back();
     }
 }

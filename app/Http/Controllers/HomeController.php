@@ -18,14 +18,12 @@ class HomeController extends Controller
         return view('frontend.index',compact('about','services'));
     }
     public function blog(){
-        $posts = Post::where('status',"public")->get()->sortByDesc('id');
-        $tags = Tag::all();
-        return view('frontend.blog',compact('posts','tags'));
+        $posts = Post::where('status',"public")->get()->sortByDesc('created_at');
+        return view('frontend.blog',compact('posts'));
     }
     public function singleblog($id){
-        $tags = Tag::all();
         $post = Post::find($id);
-        return view('frontend.singleblog',compact('post','tags'));
+        return view('frontend.singleblog',compact('post'));
     }
 
     public function about(){

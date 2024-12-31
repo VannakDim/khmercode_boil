@@ -22,6 +22,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/blog', [HomeController::class, 'blog'])->name('home.blog');
 Route::get('/blog/{id}', [HomeController::class, 'singleblog'])->name('home.blog.single');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/tag/{tag}', [SearchController::class, 'filter_by_tag'])->name('filter_by_tag');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
