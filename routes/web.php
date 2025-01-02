@@ -23,6 +23,7 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('home.blog');
 Route::get('/blog/{id}', [HomeController::class, 'singleblog'])->name('home.blog.single');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/tag/{tag}', [SearchController::class, 'filter_by_tag'])->name('filter_by_tag');
+Route::get('/category/{category}', [SearchController::class, 'filter_by_category'])->name('filter_by_category');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
@@ -43,12 +44,6 @@ Route::middleware([
     Route::post('/slider/update/{id}', [SliderController::class, 'update']);
     Route::post('/slider/update_slider', [SliderController::class, 'update_slider'])->name('update_slider');
     Route::get('/slider/softDel/{id}', [SliderController::class, 'softDelete']);
-
-    Route::get('/category/all', [CategoryController::class, 'index'])->name('all.category');
-    Route::post('/category/store', [CategoryController::class, 'store'])->name('store.category');
-    Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
-    Route::post('/category/update/{id}', [CategoryController::class, 'update']);
-    Route::get('/category/softDel/{id}', [CategoryController::class, 'softDelete']);
 
     Route::get('/brand/all', [BrandController::class, 'index'])->name('all.brand');
     Route::post('/brand/store', [BrandController::class, 'store'])->name('store.brand');

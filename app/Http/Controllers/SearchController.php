@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,17 @@ class SearchController extends Controller
             $posts = $tags->posts;
             $tags = Tag::all();
             return view('frontend.blog',compact('posts','tags'));
+        }
+        return redirect()->back();
+    }
+
+    public function filter_by_category($category)
+    {
+        $categories = Category::where('name', $category)->first();
+        if($categories){
+            $posts = $categories->posts;
+            $categories = Category::all();
+            return view('frontend.blog',compact('posts','categories'));
         }
         return redirect()->back();
     }

@@ -10,6 +10,6 @@ class Category extends Model
         'name',
     ];
     function posts(){
-        return $this->belongsTo(Post::class);
+        return $this->belongsToMany(Post::class);
     }
 }
