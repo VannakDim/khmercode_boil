@@ -3,7 +3,10 @@
     {{-- CK Editor --}}
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.css" crossorigin>
 @endsection
-
+@php
+    
+    $categories = App\Models\Category::all();
+@endphp
 @section('main_body')
     <div class="py-12">
         <div class=" mx-auto">
@@ -35,6 +38,21 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+                                            <div class="form-group">
+                                                <label for="category">Category:</label>
+                                                <select name="categories[]" id="category" class="form-control">
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->name }}"
+                                                            @if ($post->categories->contains($category->id)) selected @endif>
+                                                            {{ $category->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('category')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="tags">Tags:</label>
                                                 <select name="tags[]" id="tags" class="form-control"
@@ -123,6 +141,11 @@
             $('#tags').select2({
                 tags: true, // Allow new tags
                 placeholder: "Select or add tags",
+                tokenSeparators: [',', ' ']
+            });
+            $('#category').select2({
+                tags: true, // Allow new tags
+                placeholder: "Select or add category",
                 tokenSeparators: [',', ' ']
             });
         });

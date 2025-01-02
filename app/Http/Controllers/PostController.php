@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tag;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -23,6 +24,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $tags = Tag::all();
+        
         return view('admin.post.edit', compact('post', 'tags'));
     }
 
@@ -30,6 +32,8 @@ class PostController extends Controller
     {
         $validated=$request->validate([
             'title' => 'required',
+            'categories' => 'required|array',
+            'categories.*' => 'string|max:50',
             'tags' => 'nullable|array',
             'tags.*' => 'string|max:50',
             'description' => 'required',
@@ -38,6 +42,10 @@ class PostController extends Controller
             'is_featured' => 'nullable|boolean',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        // Create or fetch tags
+        $category = collect($validated['categories'])->map(function ($categoryName) {
+            return Category::firstOrCreate(['name' => $categoryName])->id;
+        });
         // Create or fetch tags
         $tags = collect($validated['tags'])->map(function ($tagName) {
             return Tag::firstOrCreate(['name' => $tagName])->id;
@@ -59,6 +67,7 @@ class PostController extends Controller
         }
         $post->save();
 
+        $post->categories()->sync($category);
         $post->tags()->sync($tags);
 
         return response()->json(['message' => 'Post created successfully.']);
@@ -69,6 +78,8 @@ class PostController extends Controller
         $validated=$request->validate([
             'title' => 'required',
             'status' => 'required',
+            'categories' => 'required|array',
+            'categories.*' => 'string|max:50',
             'tags' => 'required|array',
             'tags.*' => 'string|max:50',
             'description' => 'required',
@@ -76,6 +87,10 @@ class PostController extends Controller
             'is_featured' => 'nullable|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        // Create or fetch tags
+        $category = collect($validated['categories'])->map(function ($categoryName) {
+            return Category::firstOrCreate(['name' => $categoryName])->id;
+        });
         // Create or fetch tags
         $tags = collect($validated['tags'])->map(function ($tagName) {
             return Tag::firstOrCreate(['name' => $tagName])->id;
@@ -94,6 +109,7 @@ class PostController extends Controller
             $post->image = 'image/post/' . $name_gen;
         }
         $post->save();
+        $post->categories()->sync($category);
         $post->tags()->sync($tags);
         return response()->json(['message' => 'Post updated successfully.']);
     }
@@ -102,6 +118,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect()->route('all.post');
+        return redirect()->back()->with('success', 'Post deleted successfully.');
+        
     }
 }

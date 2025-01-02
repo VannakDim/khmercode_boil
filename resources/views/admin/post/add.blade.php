@@ -6,6 +6,10 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 @endsection
 
+@php
+    $categories = App\Models\Category::all();
+@endphp
+
 @section('main_body')
     <div class="py-12">
         <div class=" mx-auto">
@@ -33,6 +37,19 @@
                                                 <input type="text" name="title" class="form-control"
                                                     id="exampleInputEmail1" placeholder="Blog title">
                                                 @error('title')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="category">Category:</label>
+                                                <select name="categories[]" id="category" class="form-control">
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->name }}">
+                                                            {{ $category->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('category')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -116,6 +133,11 @@
 @section('script')
     <script>
         $(document).ready(function() {
+            $('#category').select2({
+                tags: true, // Allow new tags
+                placeholder: "Select or add tags",
+                tokenSeparators: [',', ' ']
+            });
             $('#tags').select2({
                 tags: true, // Allow new tags
                 placeholder: "Select or add tags",
