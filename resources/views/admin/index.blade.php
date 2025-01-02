@@ -18,7 +18,7 @@
         <!-- Top Statistics -->
         <div class="row">
             <div class="col-xl-12">
-                <h1 class="kh-koulen"><span class="welcome-text"></span></h1>
+                <strong><h1 class="kh-koulen"><span class="welcome-text"></span></h1></strong>
             </div>
         </div>
         <div class="row">
