@@ -98,7 +98,10 @@
                                                 @enderror
                                             </div>
         
-        
+                                            <!-- Loading indicator -->
+                                            <div id="loading" style="display: none;">
+                                                Uploading, please wait...
+                                            </div>
                                             <button type="submit" class="btn btn-primary float-right">Edit Blog</button>
                                             <a href="{{ route('all.post') }}" class="btn btn-secondary float-right"
                                                 style="margin-right: 6px">Back</a>
@@ -151,6 +154,36 @@
                 previewImage.style.backgroundImage = `url('${default_img}')`;
                 previewImage.style.display = 'none';
             }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#uploadForm').on('submit', function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                // Show loading indicator
+                $('#loading').show();
+
+                // Submit the form via AJAX
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Hide loading indicator
+                        $('#loading').hide();
+                        window.location.href = '{{ route("all.post") }}'; // Redirect to the "home" route
+                        alert(response.message);
+                    },
+                    error: function(xhr) {
+                        // Hide loading indicator
+                        $('#loading').hide();
+                        alert('Upload failed: ' + xhr.responseJSON.message);
+                    }
+                });
+            });
         });
     </script>
 @endsection

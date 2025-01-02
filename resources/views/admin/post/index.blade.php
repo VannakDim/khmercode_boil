@@ -21,7 +21,7 @@
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title text-primary kh-koulen">{{ $post->title }}</h5>
-                                            <p class="card-text pb-3">{{ $post->description }}</p>
+                                            <p class="card-text pb-3">{{ Str::limit($post->description,50) }}</p>
                                             <a href="/post/edit/{{$post->id}}" class="btn btn-outline-primary edit-button">Edit</a>
                                             <a class="btn btn-danger" href="{{ url('post/softDel/' . $post->id) }}"
                                                 href="">Delete</a>

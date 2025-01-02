@@ -54,12 +54,14 @@ class PostController extends Controller
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('image/post/'), $name_gen);
             $post->image = 'image/post/' . $name_gen;
+            // Simulate a long process (e.g., 5 seconds)
+            // sleep(5);
         }
         $post->save();
 
         $post->tags()->sync($tags);
 
-        return redirect()->route('all.post');
+        return response()->json(['message' => 'Post created successfully.']);
     }
 
     public function update(Request $request, $id)
@@ -93,8 +95,7 @@ class PostController extends Controller
         }
         $post->save();
         $post->tags()->sync($tags);
-
-        return redirect()->route('all.post');
+        return response()->json(['message' => 'Post updated successfully.']);
     }
 
     public function softDelete($id)
