@@ -21,7 +21,7 @@
                                         {{ session('error') }}
                                     </div>
                                 @endif
-                                <form action="/post/update/{{ $post->id }}" method="POST"
+                                <form id="uploadForm" action="/post/update/{{ $post->id }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
