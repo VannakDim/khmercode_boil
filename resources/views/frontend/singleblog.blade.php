@@ -35,7 +35,7 @@
                 </div>
   
                 <h2 class="entry-title">
-                  <a href="blog-single.html" class="kh-battambang">{{$post->title}}</a>
+                  <a href="#" class="kh-battambang">{{$post->title}}</a>
                 </h2>
   
                 <div class="entry-meta">
@@ -64,9 +64,6 @@
                       @foreach ($post->tags as $tag)
                           <li><a href="#">{{$tag->name}}</a></li>
                       @endforeach
-                      {{-- <li><a href="#">Creative</a></li>
-                      <li><a href="#">Tips</a></li>
-                      <li><a href="#">Marketing</a></li> --}}
                     </ul>
                   </div>
   
@@ -81,7 +78,7 @@
               </article><!-- End blog entry -->
   
               <div class="blog-author clearfix" data-aos="fade-up">
-                <img src="{{ asset('frontend/assets/img/blog-author.jpg') }}" class="rounded-circle float-left" alt="">
+                <img src="{{ asset($post->users->profile_photo_path) }}" class="rounded-circle float-left" alt="">
                 <h4>Jane Smith</h4>
                 <div class="social-links">
                   <a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
