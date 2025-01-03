@@ -54,7 +54,7 @@
                   <div class="float-left">
                     <i class="icofont-folder"></i>
                     <ul class="cats">
-                      <li><a href="{{ route('filter_by_category', $post->category->name) }}">{{$post->category->name}}</a></li>
+                      <li><a href="{{ route('filter_by_category', $post->categories->name) }}">{{$post->categories->name}}</a></li>
                       {{-- <li><a href="#">Business</a></li> --}}
                     </ul>
   
