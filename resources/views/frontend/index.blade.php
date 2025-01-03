@@ -1,8 +1,8 @@
 @extends('frontend.layout.web')
 
 @section('meta')
-    <title>{{ $meta->title ?? 'KON KHMER CODE' }}</title>
-    <meta name="description" content="{{ $meta->description ?? 'កូនខ្មែរកូដ ផ្តល់ជូនលោកអ្នកនូវសេវាកម្មល្អឥតខ្ចោះក្នុងការបង្កើតគេហទំព័រផ្លូវការ' }}">
+    <title>KON KHMER CODE|កូនខ្មែរកូដ</title>
+    <meta name="description" content="កូនខ្មែរកូដ ផ្តល់ជូនលោកអ្នកនូវសេវាកម្មល្អឥតខ្ចោះក្នុងការបង្កើតគេហទំព័រផ្លូវការ">
     <meta property="og:title" content="{{ $meta->title ?? 'កូនខ្មែរកូដ' }}">
     <meta property="og:description" content="{{ $meta->description ?? 'កូនខ្មែរកូដ ផ្តល់ជូនលោកអ្នកនូវសេវាកម្មល្អឥតខ្ចោះក្នុងការបង្កើតគេហទំព័រផ្លូវការ' }}">
     <meta property="og:image" content="{{ asset($meta->image ?? 'frontend/assets/img/default.jpg') }}">

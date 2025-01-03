@@ -115,8 +115,9 @@
                                     <div id="loading" style="display: none;">
                                         Uploading your post..., please wait...
                                     </div>
-                                    
-                                    <button type="submit" class="ladda-button btn btn-primary float-right"  data-style="expand-left">
+
+                                    <button type="submit" class="ladda-button btn btn-primary float-right"
+                                        data-style="expand-left">
                                         <span class="ladda-label">Save!</span>
                                         <span class="ladda-spinner"></span>
                                     </button>
@@ -177,6 +178,26 @@
             }
         });
     </script>
+    <script src="https://cdn.tiny.cloud/1/qdi8ljnwutu3zjh290nqmze8oo8w5x9wqh925tzk9eyqpqmk/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | chords | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | charmap | pagebreak | help',
+            setup: function(editor) {
+                editor.ui.registry.addButton('chords', {
+                    text: 'Add Chord',
+                    onAction: function() {
+                        const chord = prompt('Enter chord:');
+                        if (chord) {
+                            editor.insertContent(`[${chord}]`);
+                        }
+                    },
+                });
+            },
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('#uploadForm').on('submit', function(e) {
@@ -195,7 +216,8 @@
                     success: function(response) {
                         // Hide loading indicator
                         $('#loading').hide();
-                        window.location.href = '{{ route("all.post") }}'; // Redirect to the "home" route
+                        window.location.href =
+                        '{{ route('all.post') }}'; // Redirect to the "home" route
                         alert(response.message);
                     },
                     error: function(xhr) {
