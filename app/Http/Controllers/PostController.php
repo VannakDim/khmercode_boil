@@ -24,13 +24,13 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $tags = Tag::all();
-        
+
         return view('admin.post.edit', compact('post', 'tags'));
     }
 
     public function store(Request $request)
     {
-        $validated=$request->validate([
+        $validated = $request->validate([
             'title' => 'required',
             'categories' => 'required|array',
             'categories.*' => 'string|max:50',
@@ -55,7 +55,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->status = $request->status;
         $post->content = $request->content;
-        $post->is_featured = $request->featured?1:0;
+        $post->is_featured = $request->featured ? 1 : 0;
         $post->user_id = Auth::user()->id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -63,7 +63,7 @@ class PostController extends Controller
             $image->move(public_path('image/post/'), $name_gen);
             $post->image = 'image/post/' . $name_gen;
             // Simulate a long process (e.g., 5 seconds)
-            // sleep(5);
+            sleep(1);
         }
         $post->save();
 
@@ -75,7 +75,7 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validated=$request->validate([
+        $validated = $request->validate([
             'title' => 'required',
             'status' => 'required',
             'categories' => 'required|array',
@@ -100,7 +100,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->status = $request->status;
         $post->content = $request->content;
-        $post->is_featured = $request->featured?1:0;
+        $post->is_featured = $request->featured ? 1 : 0;
         $post->user_id = Auth::user()->id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -108,6 +108,8 @@ class PostController extends Controller
             $image->move(public_path('image/post/'), $name_gen);
             $post->image = 'image/post/' . $name_gen;
         }
+        sleep(1);
+
         $post->save();
         $post->categories()->sync($category);
         $post->tags()->sync($tags);
@@ -119,6 +121,5 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
         return redirect()->back()->with('success', 'Post deleted successfully.');
-        
     }
 }

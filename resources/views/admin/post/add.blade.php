@@ -113,10 +113,13 @@
 
                                     <!-- Loading indicator -->
                                     <div id="loading" style="display: none;">
-                                        Uploading, please wait...
+                                        Uploading your post..., please wait...
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary float-right">Add Blog</button>
+                                    
+                                    <button type="submit" class="ladda-button btn btn-primary btn-square btn-ladda btn btn-primary float-right"  data-style="expand-left">
+                                        <span class="ladda-label">Save!</span>
+                                        <span class="ladda-spinner"></span>
+                                    </button>
                                     <a href="{{ route('all.post') }}" class="btn btn-secondary float-right"
                                         style="margin-right: 6px">Back</a>
                                 </form>
