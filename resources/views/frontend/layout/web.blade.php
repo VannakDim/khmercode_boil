@@ -73,6 +73,7 @@
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
     @yield('style')
+    @yield('script')
 
 </body>
 
