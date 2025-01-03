@@ -116,7 +116,7 @@
                                         Uploading your post..., please wait...
                                     </div>
                                     
-                                    <button type="submit" class="ladda-button btn btn-primary btn-square btn-ladda btn btn-primary float-right"  data-style="expand-left">
+                                    <button type="submit" class="ladda-button btn btn-primary float-right"  data-style="expand-left">
                                         <span class="ladda-label">Save!</span>
                                         <span class="ladda-spinner"></span>
                                     </button>

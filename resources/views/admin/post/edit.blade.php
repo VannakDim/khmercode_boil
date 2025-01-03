@@ -120,7 +120,7 @@
                                             <div id="loading" style="display: none;">
                                                 Updating, please wait...
                                             </div>
-                                            <button type="submit" class="ladda-button btn btn-primary btn-square btn-ladda btn btn-primary float-right"  data-style="expand-left">
+                                            <button type="submit" class="ladda-button btn btn-primary float-right"  data-style="expand-left">
                                                 <span class="ladda-label">Update!</span>
                                                 <span class="ladda-spinner"></span>
                                             </button>
