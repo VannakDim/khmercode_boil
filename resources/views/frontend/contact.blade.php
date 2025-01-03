@@ -17,7 +17,7 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Contact</h2>
+                <h2><strong>CONTACT</strong></h2>
                 <ol>
                     <li><a href="index.html">Home</a></li>
                     <li>Contact</li>
