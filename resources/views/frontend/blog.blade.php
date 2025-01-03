@@ -14,7 +14,7 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Blog</h2>
+                <h2><strong>NEW FEED</strong></h2>
                 <ol>
                     <li><a href="/">Home</a></li>
                     <li>blog</li>
