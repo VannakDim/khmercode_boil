@@ -42,15 +42,15 @@
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="kh-koulen">{{ $about->short_description }}</h3>
+                            <h3 class="kh-koulen">{!! $about->short_description !!}</h3>
                             <p class="kh-battambang justify">
-                                {{ $about->long_description }}
+                                {!! $about->long_description !!}
                             </p>
 
                             <ul>
                                 @foreach ($about->items as $item)
                                     <li class="kh-battambang">
-                                        <i class="ri-check-double-line"></i>{{ $item->about_item }}
+                                        <i class="ri-check-double-line"></i>{!! $item->about_item !!}
                                     </li>
                                 @endforeach
                             </ul>
