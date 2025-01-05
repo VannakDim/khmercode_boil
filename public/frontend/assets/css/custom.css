@@ -5,14 +5,14 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'khmer-mealea'; /* Name of the font */
-  src: url('/font/Mealea D.ttf') format('woff');  /* Fallback */
+  font-family: 'khmer-basak'; /* Name of the font */
+  src: url('/font/KhmerOSBassac.ttf') format('woff');  /* Fallback */
   font-weight: normal;
   font-style: normal;
 }
 
 .kh-koulen {
-  font-family: "koulen", "khmer-battambang" !important;
+  font-family: "khmer-basak", "khmer-battambang" !important;
   line-height: 40px !important;
 }
 
@@ -39,8 +39,10 @@ h3 {
 }
 
 .about-us .content h4,
+h4,
 h5,
 h6,
+.entry-title,
 p {
   font-family: "khmer-Battambang", sans-serif !important;
 
