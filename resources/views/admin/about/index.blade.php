@@ -42,16 +42,16 @@
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <p class="kh-battambang" style="text-align: justify">
-                                                            {{ $abouts->long_description }}</p>
+                                                            {!! $abouts->long_description !!}</p>
                                                         @foreach ($abouts->items as $item)
                                                             <ul>
                                                                 <li class="kh-battambang">
                                                                     <i class="ri-check-double-line px-2"
-                                                                        style="color: #1bbd36"></i>{{ $item->about_item }}
+                                                                        style="color: #1bbd36"></i>{!! $item->about_item !!}
                                                                 </li>
                                                             </ul>
                                                         @endforeach
-                                                        <p class="kh-battambang">{!! html_entity_decode($abouts->more_description) !!}</p>
+                                                        <p class="kh-battambang">{!! $abouts->more_description !!}</p>
                                                         <p class="card-text">
                                                             <small class="text-muted">Last updated
                                                                 {{ $abouts->updated_at->diffForHumans() }}</small>
