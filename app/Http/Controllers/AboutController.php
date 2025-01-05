@@ -39,7 +39,7 @@ class AboutController extends Controller
 
     public function edit($id)
     {
-        $abouts = About::find($id);
+        $abouts = About::first();
         $items = AboutItem::all();
         return view('admin.about.edit', compact('abouts', 'items'));
     }

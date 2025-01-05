@@ -13,16 +13,17 @@
 
                     <div class="col-md-12">
                         <div class="card card-default">
-                            <div class="card-header card-header-border-bottom" style="display: flex; justify-content:space-between">
+                            <div class="card-header card-header-border-bottom"
+                                style="display: flex; justify-content:space-between">
                                 <h2 class="kh-koulen" style="font-weight: 700">EDIT PAGE "ABOUT"</h2>
                                 <div>
                                     <a href="{{ route('all.about') }}" class="btn btn-secondary align-right">BACK</a>
-                                    <button type="submit" class="btn btn-primary align-right">SAVE</button>
+                                    {{-- <button type="submit" class="btn btn-primary align-right">SAVE</button> --}}
                                 </div>
                             </div>
                             <div class="card-body">
                                 <input type="hidden" value="{{ $abouts->id }}">
-                                <form action="{{ url('about/update/' . $abouts->id) }}" method="POST"
+                                <form action="{{ url('/about/update/' . $abouts->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="old_image" value="{{ $abouts->image }}">
@@ -40,7 +41,8 @@
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">About title</label>
                                                     <input type="text" name="title" class="form-control"
-                                                        value="{{ $abouts->title }}" id="exampleInputEmail1" placeholder="About title">
+                                                        value="{{ $abouts->title }}" id="exampleInputEmail1"
+                                                        placeholder="About title">
                                                     @error('title')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -53,7 +55,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Short description</label>
                                         <input type="text" name="short_description" class="form-control"
@@ -77,7 +79,8 @@
                                                 <option>{{ $item->about_item }}</option>
                                             @endforeach
                                         </select>
-                                        <a class="btn btn-sm btn-success edit-btn mt-2" href="/about-item-page">Edit items</a>
+                                        <a class="btn btn-sm btn-success edit-btn mt-2" href="/about-item-page">Edit
+                                            items</a>
                                     </div>
 
                                     <div class="form-group">
@@ -108,8 +111,25 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.umd.js" crossorigin></script>
-    <script src="https://cdn.ckbox.io/ckbox/2.6.1/ckbox.js" crossorigin></script>
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
-    
+    <script src="https://cdn.tiny.cloud/1/qdi8ljnwutu3zjh290nqmze8oo8w5x9wqh925tzk9eyqpqmk/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | chords | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | charmap | pagebreak | help',
+            setup: function(editor) {
+                editor.ui.registry.addButton('chords', {
+                    text: 'Add Chord',
+                    onAction: function() {
+                        const chord = prompt('Enter chord:');
+                        if (chord) {
+                            editor.insertContent(`[${chord}]`);
+                        }
+                    },
+                });
+            },
+        });
+    </script>
 @endsection
