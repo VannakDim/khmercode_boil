@@ -16,7 +16,9 @@
   line-height: 40px;
 }
 
-
+body{
+  font-family: "khmer-battambang", sans-serif !important;
+}
 .justify {
   text-align: justify !important;
 }
@@ -67,4 +69,8 @@ p {
   justify-content: center;     /* Centers all columns horizontally */
   align-items: center;         /* Centers all columns vertically (optional) */
 
+}
+
+.entry-content{
+  font-family: "khmer-Battambang", sans-serif !important;
 }
