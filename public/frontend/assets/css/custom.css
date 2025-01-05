@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'khmer-battambang'; /* Name of the font */
-  src: url('font/KhmerOSBattambang-Regular.ttf') format('woff2'), /* Modern browsers */
-       url('font/KhmerOSBattambang-Regular.ttf') format('woff');  /* Fallback */
+  src: url('/font/KhmerOSBattambang-Bold.ttf') format('woff2'), /* Modern browsers */
+       url('/font/KhmerOSBattambang-Regular.ttf') format('woff');  /* Fallback */
   font-weight: normal;
   font-style: normal;
 }
@@ -12,7 +12,7 @@
 }
 
 .kh-battambang {
-  font-family: "battambang", "sans-serif" !important;
+  font-family: "khmer-battambang", "sans-serif" !important;
   line-height: 40px;
 }
 
