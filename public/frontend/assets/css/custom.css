@@ -1,13 +1,18 @@
 @font-face {
   font-family: 'khmer-battambang'; /* Name of the font */
-  src: url('/font/KhmerOSBattambang-Bold.ttf') format('woff2'), /* Modern browsers */
-       url('/font/KhmerOSBattambang-Regular.ttf') format('woff');  /* Fallback */
+  src: url('/font/KhmerOSBattambang-Regular.ttf') format('woff');  /* Fallback */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'khmer-mealea'; /* Name of the font */
+  src: url('/font/Mealea D3.ttf') format('woff');  /* Fallback */
   font-weight: normal;
   font-style: normal;
 }
 
 .kh-koulen {
-  font-family: "Koulen", "local-battambang" !important;
+  font-family: "khmer-mealea", "khmer-battambang" !important;
   line-height: 40px !important;
 }
 
