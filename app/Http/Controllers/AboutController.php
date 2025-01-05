@@ -80,7 +80,7 @@ class AboutController extends Controller
             $about->title = $request->title;
             $about->short_description = $request->short_description;
             $about->long_description = $request->long_description;
-            $about->more_description = '<p class="kh-battambang"' . substr($request->more_description, 3);
+            $about->more_description = $request->more_description;
             $about->save();
             return Redirect()->route('all.about')->with('success', 'About updated successfull!');
         }
@@ -113,7 +113,7 @@ class AboutController extends Controller
                 'title' => $request->title,
                 'short_description' => $request->short_description,
                 'long_description' => $request->long_description,
-                'more_description' => '<p class="kh-battambang"' . substr($request->more_description, 3),
+                'more_description' => $request->more_description,
                 'created_at' => Carbon::now()
 
             ]);

@@ -2,7 +2,7 @@
 
 @section('link')
     {{-- CK Editor --}}
-    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.css" crossorigin>
+    {{-- <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.css" crossorigin> --}}
 @endsection
 
 @section('main_body')
