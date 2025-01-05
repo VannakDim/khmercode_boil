@@ -24,7 +24,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="kh-koulen">{{ $about->short_description }}</h3>
+                            <h3 class="kh-koulen">{!! $about->short_description !!}</h3>
                         </div>
                     </div>
                     <div class="row" style="padding: 0 70px">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
                     <p class="kh-battambang justify">
-                        {{ $about->long_description }}
+                        {!! $about->long_description !!}
                     </p>
                     @foreach ($about->items as $item)
                         <ul style="margin-bottom: 0">
@@ -41,7 +41,7 @@
                         </ul>
                     @endforeach
                     <p class="font-italic">
-                        {!! html_entity_decode($about->more_description) !!}
+                        {!! $about->more_description !!}
                     </p>
                 </div>
             </div>
