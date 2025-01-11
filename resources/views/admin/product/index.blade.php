@@ -23,7 +23,7 @@
                                             <th class="d-none d-md-table-cell">Category</th>
                                             <th class="d-none d-md-table-cell">Type</th>
                                             <th class="d-none d-md-table-cell">Brand</th>
-                                            <th>Status</th>
+                                            <th class="d-none d-md-table-cell">Status</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -37,7 +37,7 @@
                                             <td class="d-none d-md-table-cell">{{$model->category->name}}</td>
                                             <td class="d-none d-md-table-cell">{{$model->type}}</td>
                                             <td class="d-none d-md-table-cell">{{$model->brand->brand_name}}</td>
-                                            <td>
+                                            <td class="d-none d-md-table-cell">
                                                 <span class="badge badge-success">Completed</span>
                                             </td>
                                             <td class="text-right">
