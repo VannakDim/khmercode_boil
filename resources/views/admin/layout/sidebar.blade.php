@@ -38,6 +38,7 @@
                     $url = Request::segment(1);
                     $component = ['slider', 'service', 'about', 'team','contact'];
                     $blog = ['post', 'tag', 'category'];
+                    $product = ['product', 'model', 'category'];
                     $home = ['brand'];
                 @endphp
                 <li class="has-sub @if (in_array($url, $home)) expand active @endif">
@@ -158,29 +159,43 @@
                     </ul>
                 </li>
 
+                <li class="has-sub @if (in_array($url, $product)) expand active @endif">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#products"
+                        aria-expanded="false" aria-controls="products">
+                        <i class="fa-solid fa-walkie-talkie"></i>
+                        <span class="nav-text">PRODUCTS</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse @if (in_array($url, $product)) show @endif" id="products"
+                        data-parent="#sidebar-menu">
+                        <div class="sub-menu">
 
+                            <li class="{{ request()->is('product/all') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('all.product') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('product/all') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">LIST</span>
 
+                                </a>
+                            </li>
 
+                            <li class="{{ request()->is('product/model') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('product.model') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('product/model') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">MODELS</span>
+
+                                </a>
+                            </li>
+
+                            {{-- <li class="{{ request()->is('category*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('all.team') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('category*') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">CATEGORIES</span>
+
+                                </a>
+                            </li> --}}
+                        </div>
+                    </ul>
+                </li>
         </div>
-        {{-- 
-        <hr class="separator" />
-
-        <div class="sidebar-footer">
-            <div class="sidebar-footer-content">
-                <h6 class="text-uppercase">
-                    Cpu Uses <span class="float-right">40%</span>
-                </h6>
-                <div class="progress progress-xs">
-                    <div class="progress-bar active" style="width: 40%;" role="progressbar"></div>
-                </div>
-                <h6 class="text-uppercase">
-                    Memory Uses <span class="float-right">65%</span>
-                </h6>
-                <div class="progress progress-xs">
-                    <div class="progress-bar progress-bar-warning" style="width: 65%;" role="progressbar">
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+        
     </div>
 </aside>

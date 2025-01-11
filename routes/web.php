@@ -5,6 +5,8 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductModelController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SliderController;
@@ -87,6 +89,12 @@ Route::middleware([
     Route::post('/post/update/{id}', [PostController::class, 'update']);
     Route::get('/post/softDel/{id}', [PostController::class, 'softDelete']);
 
+    Route::get('/product/all', [ProductController::class, 'index'])->name('all.product');
+    Route::get('/product/create', [ProductController::class, 'create'])->name('create.product');
+    Route::get('/product/model', [ProductModelController::class, 'create'])->name('product.model');
+    Route::post('/product/store', [ProductModelController::class, 'store'])->name('store.model');
+
+    
 
     Route::get('/logout', [UserAuthController::class, 'logout'])->name('user.logout');
 });
