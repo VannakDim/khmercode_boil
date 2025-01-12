@@ -6,6 +6,7 @@ use App\Models\ProductBrand;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\ProductCategory;
+use App\Models\StockInDetail;
 
 class ProductModelController extends Controller
 {
@@ -53,7 +54,7 @@ class ProductModelController extends Controller
         $brand = collect($validated['brands'])->map(function ($brandName) {
             return ProductBrand::firstOrCreate(['brand_name' => $brandName])->id;
         })->first();
-       
+
         $model = new ProductModel();
         $model->category_id = $category;
         $model->brand_id = $brand;

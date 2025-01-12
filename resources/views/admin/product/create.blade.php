@@ -90,11 +90,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Description</label>
-                                        <input type="text" name="description" class="form-control"
-                                            id="exampleInputEmail1" placeholder="Description">
-                                        @error('description')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <textarea name="description" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Description" rows="3"></textarea>
                                     </div>
 
                                     <!-- Loading indicator -->

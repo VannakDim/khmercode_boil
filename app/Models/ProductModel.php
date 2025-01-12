@@ -22,4 +22,5 @@ class ProductModel extends Model
     {
         return $this->belongsTo(ProductCategory::class);
     }
+
 }

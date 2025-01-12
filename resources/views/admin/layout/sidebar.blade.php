@@ -185,13 +185,21 @@
                                 </a>
                             </li>
 
-                            {{-- <li class="{{ request()->is('category*') ? 'active' : '' }}">
-                                <a class="sidenav-item-link" href="{{ route('all.team') }}">
-                                    <i class="fa-solid fa-caret-right {{ request()->is('category*') ? 'fa-beat' : '' }}"></i>
-                                    <span class="nav-text">CATEGORIES</span>
+                            <li class="{{ request()->is('product/stock-in') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('stockin.create') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('product/stock-in') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">STOCK IN</span>
 
                                 </a>
-                            </li> --}}
+                            </li>
+
+                            <li class="{{ request()->is('product/stock-out') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('stockout.create') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('product/stock-out') ? 'fa-beat' : '' }}"></i>
+                                    <span class="nav-text">STOCK OUT</span>
+
+                                </a>
+                            </li>
                         </div>
                     </ul>
                 </li>

@@ -90,8 +90,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Description</label>
-                                        <input type="text" name="description" class="form-control"
-                                            id="exampleInputEmail1" placeholder="Description">
+                                        <textarea name="description" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Description" rows="3"></textarea>
                                     </div>
 
                                     <!-- Loading indicator -->
@@ -104,7 +104,7 @@
                                         <span class="ladda-label">Save!</span>
                                         <span class="ladda-spinner"></span>
                                     </button>
-                                    <a href="{{ route('product.model') }}" class="btn btn-secondary float-right"
+                                    <a href="{{ route('all.product') }}" class="btn btn-secondary float-right"
                                         style="margin-right: 6px">Back</a>
                                 </form>
                             </div>
