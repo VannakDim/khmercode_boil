@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title text-primary kh-koulen">{{ $model->name }}</h5>
-                                            <p class="card-text pb-3">{{ $model->frequency }}</p>
+                                            <p class="card-text pb-3 badge badge-warning">{{ $model->frequency}}</p><span  class="badge badge-success">{{$model->type}}</span>
                                             <p class="card-text pb-3">{{ Str::limit($model->description,50) }}</p>
                                             <a href="/product/model/edit/{{$model->id}}" class="btn btn-outline-primary edit-button">Edit</a>
                                             <a class="btn btn-danger" href="{{ url('post/softDel/' . $model->id) }}"
