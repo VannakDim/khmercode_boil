@@ -11,6 +11,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StockInController;
+use App\Http\Controllers\StockOutController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserAuthController;
 use App\Models\User;
@@ -92,13 +93,17 @@ Route::middleware([
 
     Route::get('/product/all', [ProductController::class, 'index'])->name('all.product');
     Route::get('/product/create', [ProductController::class, 'create'])->name('create.product');
+    Route::get('/product/model/show', [ProductModelController::class, 'index'])->name('model.show');
+    Route::get('/product/model/edit/{id}', [ProductModelController::class, 'edit'])->name('model.edit');
+    Route::post('/product/model/update/{id}', [ProductModelController::class, 'update'])->name('model.update');
     Route::get('/product/model', [ProductModelController::class, 'create'])->name('product.model');
     Route::post('/product/store', [ProductModelController::class, 'store'])->name('store.model');
 
     Route::get('/product/stock-in', [StockInController::class, 'create'])->name('stockin.create');
     Route::post('/product/stock-in/store', [StockInController::class, 'store'])->name('stockin.store');
 
-    Route::get('/product/stock-out', [StockInController::class, 'create'])->name('stockout.create');
+    Route::get('/product/stock-out', [StockOutController::class, 'create'])->name('stockout.create');
+    Route::post('/product/stock-out/store', [StockOutController::class, 'store'])->name('stockout.store');
 
     
 

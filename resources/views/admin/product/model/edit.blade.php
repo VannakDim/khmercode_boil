@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="card card-default">
                             <div class="card-header card-header-border-bottom">
-                                <h2>Add Model</h2>
+                                <h2>EDIT MODEL</h2>
                             </div>
 
                             <div class="card-body">
@@ -22,14 +22,14 @@
                                         {{ session('error') }}
                                     </div>
                                 @endif
-                                <form id="uploadForm" action="{{ route('store.model') }}" method="POST"
+                                <form id="uploadForm" action="/product/model/update/{{$model->id}}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Model:</label>
-                                                <input type="text" name="name" class="form-control"
+                                                <input type="text" name="name" class="form-control" value="{{$model->name}}"
                                                     id="exampleInputEmail1" placeholder="Model">
                                             </div>
 
@@ -37,7 +37,8 @@
                                                 <label for="category">Category:</label>
                                                 <select name="categories[]" id="category" class="form-control">
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->name }}">
+                                                        <option value="{{ $category->name }}"
+                                                            @if ($model->category->id == $category->id) selected @endif>
                                                             {{ $category->name }}
                                                         </option>
                                                     @endforeach
@@ -48,7 +49,8 @@
                                                 <label for="brands">Brand:</label>
                                                 <select name="brands[]" id="brand" class="form-control">
                                                     @foreach ($brands as $brand)
-                                                        <option value="{{ $brand->brand_name }}">
+                                                        <option value="{{ $brand->brand_name }}"
+                                                            @if ($model->brand->id == $brand->id) selected @endif>
                                                             {{ $brand->brand_name }}
                                                         </option>
                                                     @endforeach
@@ -57,13 +59,13 @@
                                             
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Frquency band:</label>
-                                                <input frquency="text" name="frquency" class="form-control"
+                                                <input frquency="text" name="frquency" class="form-control" value="{{$model->frquency}}"
                                                     id="exampleInputEmail1" placeholder="Frquency band">
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Type:</label>
-                                                <input type="text" name="type" class="form-control"
+                                                <input type="text" name="type" class="form-control" value="{{$model->type}}"
                                                     id="exampleInputEmail1" placeholder="Product type">
                                                 @error('type')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -72,7 +74,7 @@
                                             
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Power:</label>
-                                                <input type="text" name="power" class="form-control"
+                                                <input type="text" name="power" class="form-control" value="{{$model->power}}"
                                                     id="exampleInputEmail1" placeholder="Product power">
                                             </div>
 
@@ -83,7 +85,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="post-img" id="img-preview"
-                                                style="display: flex; justify-content: center; align-items: center; background-image: url({{ asset('backend/assets/img/default-image.avif') }}); background-size: cover; background-position: center; width: 100%; height: 100%;">
+                                                style="display: flex; justify-content: center; align-items: center; background-image: url({{ asset($model->image) }}); background-size: cover; background-position: center; width: 100%; height: 100%;">
                                                 {{-- <img id="img-preview" src="" alt="Image Preview" style="max-width: 100%;max-height: 350px;object-fit: cover;"> --}}
                                             </div>
                                         </div>

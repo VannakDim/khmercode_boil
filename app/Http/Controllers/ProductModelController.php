@@ -15,7 +15,8 @@ class ProductModelController extends Controller
      */
     public function index()
     {
-        //
+        $models = ProductModel::all();
+        return view('admin.product.model.index', compact('models'));
     }
 
     /**
@@ -64,7 +65,14 @@ class ProductModelController extends Controller
         $model->capacity = $request->capacity;
         $model->power = $request->power;
         $model->description = $request->description;
-
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/product/model/'), $name_gen);
+            $model->image = 'image/product/model/' . $name_gen;
+            // Simulate a long process (e.g., 5 seconds)
+            sleep(1);
+        }
         $model->save();
         return response()->json(['message' => 'Model created successfully.']);
     }
@@ -82,7 +90,10 @@ class ProductModelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = ProductCategory::all();
+        $brands = ProductBrand::all();
+        $model = ProductModel::find($id);
+        return view('admin.product.model.edit',compact('model','brands', 'categories'));
     }
 
     /**
@@ -90,7 +101,47 @@ class ProductModelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'categories' => 'required|array',
+            'categories.*' => 'string|max:50',
+            'brands' => 'required|array',
+            'name' => 'required',
+            'frequency' => 'nullable',
+            'type' => 'nullable',
+            'capacity' => 'nullable',
+            'power' => 'nullable',
+            'description' => 'nullable',
+
+        ]);
+
+        // Create or fetch categories
+        $category = collect($validated['categories'])->map(function ($categoryName) {
+            return ProductCategory::firstOrCreate(['name' => $categoryName])->id;
+        })->first();
+        // Create or fetch brands
+        $brand = collect($validated['brands'])->map(function ($brandName) {
+            return ProductBrand::firstOrCreate(['brand_name' => $brandName])->id;
+        })->first();
+
+        $model = ProductModel::find($id);
+        $model->category_id = $category;
+        $model->brand_id = $brand;
+        $model->name = $request->name;
+        $model->frequency = $request->frequency;
+        $model->type = $request->type;
+        $model->capacity = $request->capacity;
+        $model->power = $request->power;
+        $model->description = $request->description;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/product/model/'), $name_gen);
+            $model->image = 'image/product/model/' . $name_gen;
+            // Simulate a long process (e.g., 5 seconds)
+            sleep(1);
+        }
+        $model->save();
+        return response()->json(['message' => 'Model created successfully.']);
     }
 
     /**

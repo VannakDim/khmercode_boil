@@ -177,9 +177,9 @@
                                 </a>
                             </li>
 
-                            <li class="{{ request()->is('product/model') ? 'active' : '' }}">
-                                <a class="sidenav-item-link" href="{{ route('product.model') }}">
-                                    <i class="fa-solid fa-caret-right {{ request()->is('product/model') ? 'fa-beat' : '' }}"></i>
+                            <li class="{{ request()->is('product/model*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('model.show') }}">
+                                    <i class="fa-solid fa-caret-right {{ request()->is('product/model*') ? 'fa-beat' : '' }}"></i>
                                     <span class="nav-text">MODELS</span>
 
                                 </a>

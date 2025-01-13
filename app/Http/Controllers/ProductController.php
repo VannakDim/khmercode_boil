@@ -8,23 +8,21 @@ use App\Models\ProductModel;
 use App\Models\ProductCategory;
 use App\Models\StockIn;
 use App\Models\StockInDetail;
+use App\Models\StockOutDetail;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        // $models = ProductModel::all();
-        // $products = Product::all();
-        // $stocks = StockInDetail::all();
-        // return view('admin.product.index', compact('products','models','stocks'));
 
         $data = ProductModel::with('brand')->get()->map(function ($model) {
             $stockIn = StockInDetail::where('product_model_id', $model->id)->sum('quantity');
+            $stockOut = StockOutDetail::where('product_model_id', $model->id)->sum('quantity');
             return [
                 'id' => $model->id,
                 'model_name' => $model->name,
                 'brand_name' => $model->brand->brand_name,
-                'available_stock' => $stockIn,
+                'available_stock' => $stockIn - $stockOut,
             ];
         });
         return view('admin.product.index', compact('data'));
