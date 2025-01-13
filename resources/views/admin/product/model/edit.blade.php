@@ -185,7 +185,7 @@
                         // Hide loading indicator
                         $('#loading').hide();
                         // Redirect to the "home" route
-                        window.location.href = "{{ route('product.model') }}";
+                        window.location.href = "{{ route('model.show') }}";
                         alert(response.message);
                     },
                     error: function(xhr) {
