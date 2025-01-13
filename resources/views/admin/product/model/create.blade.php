@@ -56,9 +56,9 @@
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Frquency band:</label>
-                                                <input frquency="text" name="frquency" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="Frquency band">
+                                                <label for="exampleInputEmail1">Frequency band:</label>
+                                                <input frquency="text" name="frequency" class="form-control"
+                                                    id="exampleInputEmail1" placeholder="Frequency band">
                                             </div>
                                             
                                             <div class="form-group">
