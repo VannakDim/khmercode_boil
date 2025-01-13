@@ -59,7 +59,7 @@
                                             
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Frquency band:</label>
-                                                <input frquency="text" name="frquency" class="form-control" value="{{$model->frquency}}"
+                                                <input frquency="text" name="frequency" class="form-control" value="{{$model->frequency}}"
                                                     id="exampleInputEmail1" placeholder="Frquency band">
                                             </div>
                                             
