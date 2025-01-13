@@ -151,4 +151,11 @@ class ProductModelController extends Controller
     {
         //
     }
+
+    public function softDelete($id)
+    {
+        $model = ProductModel::find($id);
+        $model->delete();
+        return redirect()->back()->with('success', 'Product model deleted successfully.');
+    }
 }

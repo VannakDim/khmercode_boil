@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('brand_status')->default('active');
             $table->string('brand_country')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -31,7 +31,7 @@
                                             <p class="badge badge-warning">{{ $model->frequency}}</p><span  class="badge badge-success">{{$model->type}}</span>
                                             <p class="card-text py-3">{{ Str::limit($model->description,50) }}</p>
                                             <a href="/product/model/edit/{{$model->id}}" class="btn btn-outline-primary edit-button">Edit</a>
-                                            <a class="btn btn-danger" href="{{ url('post/softDel/' . $model->id) }}"
+                                            <a class="btn btn-danger" href="{{ url('product/softDel/' . $model->id) }}"
                                                 href="">Delete</a>
                                         </div>
                                     </div>

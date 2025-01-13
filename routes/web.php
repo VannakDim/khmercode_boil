@@ -14,6 +14,7 @@ use App\Http\Controllers\StockInController;
 use App\Http\Controllers\StockOutController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserAuthController;
+use App\Models\ProductModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -96,6 +97,7 @@ Route::middleware([
     Route::get('/product/model/show', [ProductModelController::class, 'index'])->name('model.show');
     Route::get('/product/model/edit/{id}', [ProductModelController::class, 'edit'])->name('model.edit');
     Route::post('/product/model/update/{id}', [ProductModelController::class, 'update'])->name('model.update');
+    Route::get('/product/softDel/{id}', [ProductModel::class, 'softDelete']);
     Route::get('/product/model', [ProductModelController::class, 'create'])->name('product.model');
     Route::post('/product/store', [ProductModelController::class, 'store'])->name('store.model');
 
