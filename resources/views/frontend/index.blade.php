@@ -105,7 +105,7 @@
                     <div class="portfolio-info">
                         <h4>{{$item['model_name']}}<span class="badge badge-success pb-0 mx-2">{{$item['available_stock']}}</span></h4>
                         <p>{{$item['brand_name']}}</p>
-                        <a href="{{ asset('frontend/assets/img/portfolio/portfolio-2.jpg') }}" data-gall="portfolioGallery"
+                        <a href="{{ asset($item['image'])}}" data-gall="portfolioGallery"
                             class="venobox preview-link" title="{{$item['model_name']}}"><i class="bx bx-plus"></i></a>
                         <a href="portfolio-details.html" class="details-link" title="More Details"><i
                                 class="bx bx-link"></i></a>
