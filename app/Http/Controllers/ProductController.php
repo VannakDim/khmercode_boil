@@ -21,6 +21,7 @@ class ProductController extends Controller
             return [
                 'id' => $model->id,
                 'model_name' => $model->name,
+                'image' => $model->image,
                 'brand_name' => $model->brand->brand_name,
                 'available_stock' => $stockIn - $stockOut,
             ];
