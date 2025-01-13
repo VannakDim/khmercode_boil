@@ -27,7 +27,7 @@
                                         <div class="card-img-cover" style="background-image: url({{ asset($model->image) }});">
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title text-primary kh-koulen">{{ $model->name }}</h5>
+                                            <h5 class="card-title text-primary">{{$model->brand->brand_name}} <strong>{{ $model->name }}</strong></h5>
                                             <p class="badge badge-warning">{{ $model->frequency}}</p><span  class="badge badge-success">{{$model->type}}</span>
                                             <p class="card-text pb-3">{{ Str::limit($model->description,50) }}</p>
                                             <a href="/product/model/edit/{{$model->id}}" class="btn btn-outline-primary edit-button">Edit</a>
