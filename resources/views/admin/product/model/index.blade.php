@@ -29,7 +29,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title text-primary">{{$model->brand->brand_name}} <strong>{{ $model->name }}</strong></h5>
                                             <p class="badge badge-warning">{{ $model->frequency}}</p><span  class="badge badge-success">{{$model->type}}</span>
-                                            <p class="card-text pb-3">{{ Str::limit($model->description,50) }}</p>
+                                            <p class="card-text py-3">{{ Str::limit($model->description,50) }}</p>
                                             <a href="/product/model/edit/{{$model->id}}" class="btn btn-outline-primary edit-button">Edit</a>
                                             <a class="btn btn-danger" href="{{ url('post/softDel/' . $model->id) }}"
                                                 href="">Delete</a>
