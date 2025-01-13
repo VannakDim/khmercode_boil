@@ -93,7 +93,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Description</label>
                                         <textarea name="description" class="form-control"
-                                            id="exampleInputEmail1" placeholder="Description" rows="3"></textarea>
+                                            id="exampleInputEmail1" placeholder="Description" rows="3">{{$model->description}}</textarea>
                                     </div>
 
                                     <!-- Loading indicator -->
