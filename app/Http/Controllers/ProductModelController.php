@@ -6,7 +6,6 @@ use App\Models\ProductBrand;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\ProductCategory;
-use App\Models\StockInDetail;
 
 class ProductModelController extends Controller
 {
