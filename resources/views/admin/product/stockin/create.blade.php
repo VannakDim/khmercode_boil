@@ -94,7 +94,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Note:</label>
-                                        <textarea name="note" class="form-control" id="exampleInputEmail1" placeholder="Description your note" rows="3"></textarea>
+                                        <textarea name="note" class="form-control" id="exampleInputEmail1" placeholder="Description your note"
+                                            rows="3"></textarea>
                                     </div>
 
                                     <!-- Loading indicator -->
@@ -153,7 +154,35 @@
     <script src="https://cdn.tiny.cloud/1/qdi8ljnwutu3zjh290nqmze8oo8w5x9wqh925tzk9eyqpqmk/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>
 
+    <script>
+        $('#uploadForm').on('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
 
+            // Show loading indicator
+            $('#loading').show();
+
+            // Submit the form via AJAX
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Hide loading indicator
+                    $('#loading').hide();
+                    alert(response.message);
+                    window.location.href =
+                        '{{ route('stockin.create') }}'; // Redirect to the "home" route
+                },
+                error: function(xhr) {
+                    // Hide loading indicator
+                    $('#loading').hide();
+                    alert('Upload failed: ' + xhr.responseJSON.message);
+                }
+            });
+        });
+    </script>
     <script>
         // Array to store added items
         let items = [];

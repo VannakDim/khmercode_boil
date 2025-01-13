@@ -25,6 +25,14 @@ class StockInController extends Controller
         $stock_in->invoice_no = $request->invoice_no;
         $stock_in->supplier = $request->supplier;
         $stock_in->note = $request->note;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/product/stock_in/'), $name_gen);
+            $stock_in->image = 'image/product/stock_in/' . $name_gen;
+            // Simulate a long process (e.g., 5 seconds)
+            sleep(1);
+        }
         $stock_in->save();
 
         // Decode the items JSON
@@ -38,6 +46,6 @@ class StockInController extends Controller
                 'quantity' => $item['quantity'],
             ]);
         }
-        return response()->json(['message', 'Successful!']);
+        return response()->json(['message'=> 'Successful!']);
     }
 }
